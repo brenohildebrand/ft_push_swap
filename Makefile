@@ -1,0 +1,65 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/14 18:23:41 by bhildebr          #+#    #+#              #
+#    Updated: 2023/12/14 20:27:24 by bhildebr         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g
+
+HEADERS = \
+	cllist.h \
+	ft_universe.h \
+	integer.h \
+	memory.h \
+	program.h
+SOURCES = \
+	cllist_append.c \
+	cllist_create.c \
+	cllist_destroy.c \
+	ft_atoi.c \
+	ft_isdigit.c \
+	integer_create.c \
+	integer_destroy.c \
+	integer_set.c \
+	memory_create.c \
+	memory_destroy.c \
+	program.c
+OBJECTS = \
+	cllist_append.o \
+	cllist_create.o \
+	cllist_destroy.o \
+	ft_atoi.o \
+	ft_isdigit.o \
+	integer_create.o \
+	integer_destroy.o \
+	integer_set.o \
+	memory_create.o \
+	memory_destroy.o \
+	program.o
+
+all: norm $(NAME)
+
+norm:
+	norminette $(HEADERS) $(SOURCES)
+
+$(NAME): $(OBJECTS)
+	cc -o $(NAME) $(OBJECTS)
+
+clean:
+	$(RM) $(OBJECTS)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all norm clean fclean re
