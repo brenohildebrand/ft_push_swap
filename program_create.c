@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 11:02:06 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 11:03:27 by bhildebr         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:43:36 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_program	program_create(int argc, char *argv[])
 	program = memory_create(sizeof(struct s_program));
 	program->argc = argc;
 	program->argv = argv;
+	program->stack_a = cllist_create();
+	program->stack_b = cllist_create();
 	return (program);
 }

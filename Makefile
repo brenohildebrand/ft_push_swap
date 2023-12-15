@@ -6,7 +6,7 @@
 #    By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 18:23:41 by bhildebr          #+#    #+#              #
-#    Updated: 2023/12/14 20:27:24 by bhildebr         ###   ########.fr        #
+#    Updated: 2023/12/15 13:53:47 by bhildebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,15 @@ SOURCES = \
 	integer_create.c \
 	integer_destroy.c \
 	integer_set.c \
+	main.c \
 	memory_create.c \
 	memory_destroy.c \
-	program.c
+	program_are_numbers_sorted.c \
+	program_create.c \
+	program_destroy.c \
+	program_read_numbers.c \
+	program_run.c \
+	program_solve.c
 OBJECTS = \
 	cllist_append.o \
 	cllist_create.o \
@@ -42,9 +48,15 @@ OBJECTS = \
 	integer_create.o \
 	integer_destroy.o \
 	integer_set.o \
+	main.o \
 	memory_create.o \
 	memory_destroy.o \
-	program.o
+	program_are_numbers_sorted.c \
+	program_create.o \
+	program_destroy.o \
+	program_read_numbers.o \
+	program_run.o \
+	program_solve.c
 
 all: norm $(NAME)
 

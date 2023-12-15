@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shared_get.c                                       :+:      :+:    :+:   */
+/*   program_push_from_b_to_a.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 10:21:16 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 10:36:13 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/12/15 14:11:38 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/12/15 14:12:35 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shared.h"
+#include "program.h"
 
-t_shared	shared_get(void)
+void	program_push_from_b_to_a(t_program program)
 {
-	t_shared	*shared_address;
-
-	shared_address = _shared_get_address();
-	return (*shared_address);
+	return ;
 }

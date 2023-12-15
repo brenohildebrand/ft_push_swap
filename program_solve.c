@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shared_create.c                                    :+:      :+:    :+:   */
+/*   program_solve.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 10:22:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 10:24:39 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/12/15 13:49:37 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/12/15 14:15:46 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shared.h"
+#include "program.h"
 
-t_shared	shared_create(void)
+void	program_solve(t_program program)
 {
-	t_shared	shared;
-
-	shared = memory_create(sizeof(struct s_shared));
-	shared->stack_a = cllist_create();
-	shared->stack_b = cllist_create();
-	return (shared);
+	if (program->argc == 3)
+	{
+		ft_print("sa\n");
+		return ;
+	}
+	else
+	{
+		program_push_from_a_to_b(program);
+		program_solve_for_three_in_a(program);
+		program_push_from_b_to_a(program);
+	}
 }
