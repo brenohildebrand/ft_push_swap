@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cllist_append.c                                    :+:      :+:    :+:   */
+/*   program_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 19:28:24 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 09:30:37 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/12/15 11:03:35 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/12/15 11:04:40 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cllist.h"
+#include "program.h"
 
-void	cllist_append(t_cllist cllist, void *value)
+void	program_destroy(t_program program)
 {
-	t_cllist	next;
-
-	if (cllist->value == 0)
-	{
-		cllist->value = value;
-	}
-	else
-	{
-		next = cllist_create();
-		next->value = value;
-		next->next = cllist;
-		while (cllist->next != next->next)
-			cllist = cllist->next;
-		cllist->next = next;
-	}
+	memory_destroy(program);
 }

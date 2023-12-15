@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cllist_append.c                                    :+:      :+:    :+:   */
+/*   shared_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 19:28:24 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 09:30:37 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/12/15 10:30:30 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/12/15 10:38:13 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cllist.h"
+#include "shared.h"
 
-void	cllist_append(t_cllist cllist, void *value)
+void	shared_set(t_shared shared)
 {
-	t_cllist	next;
+	t_shared	*shared_address;
 
-	if (cllist->value == 0)
-	{
-		cllist->value = value;
-	}
-	else
-	{
-		next = cllist_create();
-		next->value = value;
-		next->next = cllist;
-		while (cllist->next != next->next)
-			cllist = cllist->next;
-		cllist->next = next;
-	}
+	shared_address = _shared_get_address();
+	if (*shared_address == 0)
+		*shared_address = shared;
 }

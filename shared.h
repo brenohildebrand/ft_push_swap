@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   program.h                                          :+:      :+:    :+:   */
+/*   shared.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 18:22:28 by bhildebr          #+#    #+#             */
-/*   Updated: 2023/12/15 11:08:43 by bhildebr         ###   ########.fr       */
+/*   Created: 2023/12/15 09:58:22 by bhildebr          #+#    #+#             */
+/*   Updated: 2023/12/15 10:32:40 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROGRAM_H
-# define PROGRAM_H
+#ifndef SHARED_H
+# define SHARED_H
 
-# include "memory.h"
 # include "cllist.h"
-# include "ft_universe.h"
-# include "integer.h"
-# include "shared.h"
-# include <unistd.h>
-# include <stdlib.h>
 
-typedef struct s_program	*t_program;
+typedef struct s_shared	*t_shared;
 
-struct s_program {
-	int		argc;
-	char	*argv[];
+struct s_shared {
+	t_cllist	stack_a;
+	t_cllist	stack_b;
 };
 
-t_program	program_create(int argc, char *argv[]);
-void		program_destroy(t_program program);
-int			program_run(t_program program);
+t_shared	shared_create(void);
+void		shared_destroy(t_shared shared);
+void		shared_set(t_shared shared);
+t_shared	shared_get(void);
+t_shared	*_shared_get_address(void);
 
 #endif
