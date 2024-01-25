@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk.h                                             :+:      :+:    :+:   */
+/*   action.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 08:57:45 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 03:38:55 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/01/25 04:15:43 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/01/25 04:33:38 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TURK_H
-# define TURK_H
+#ifndef ACTION_H
+# define ACTION_H
 
-# include "pair.h"
+typedef struct s_action	*t_action;
 
-void	turk(t_pair stacks);
+struct s_action {
+	unsigned int	price;
+	unsigned int	option;
+};
 
 #endif

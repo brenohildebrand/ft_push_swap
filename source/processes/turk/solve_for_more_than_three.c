@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk.c                                             :+:      :+:    :+:   */
+/*   solve_for_more_than_three.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:11:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 03:29:40 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/01/25 03:29:01 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/01/25 03:56:05 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "turh.h"
 
-void	turk(t_pair stacks)
+void	solve_for_more_than_three(t_pair stacks)
 {
-	if (stack_get_height(stacks->first) == 0)
-	{
-		return ;
-	}
-	else if (stack_get_heigth(stacks->first) == 1)
-	{
-		return ;
-	}
-	else if (stack_get_height(stacks->first) == 2)
-	{
-		solve_for_two(stacks);
-		return ;
-	}
-	else if (stack_get_height(stacks->first) == 3)
-	{
-		solve_for_three(stacks);
-		return ;
-	}
-	else
-	{
-		solve_for_more_than_three(stacks);	
-	}
+	push_two_from_first_to_second(stacks);
+	while (stack_get_height(stacks->first) > 2)
+		push_cheaper_from_first_to_second(stacks);
+	push_everything_from_second_to_first(stacks);
 }

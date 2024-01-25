@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_cheaper_from_a_to_b.c                         :+:      :+:    :+:   */
+/*   push_cheaper_from_first_to_second.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:56:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/24 18:35:47 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/25 04:05:44 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "turk.h"
-
-#define A 0
-#define B 1
 
 int	calculate_price(
 	t_stack a, 
@@ -54,7 +51,7 @@ void	push_from_a_to_b_given_indexes(
 	
 }
 
-void	push_cheaper_from_a_to_b(t_stack a, t_stack b)
+void	push_cheaper_from_first_to_second(t_pair stacks)
 {
 	int	current_price;
 	int	min_price;
@@ -83,4 +80,35 @@ void	push_cheaper_from_a_to_b(t_stack a, t_stack b)
 		i++;
 	}
 	push_from_a_to_b_given_indexes(a, b, indexes[0], indexes[1]);
+}
+
+void	push_cheaper_from_first_to_second(t_pair stacks)
+{
+	// iterate on the first stack
+	// for each iteration calculate price
+	//		iterate on the second stack
+	//		find the first less than
+	//		calculate price and return
+	// store the cheapest
+	// do the operation
+
+	int			i;
+	t_operation	operation;
+	t_operation cheapest_operation;
+
+	i = stack_get_height(stacks->first);
+	while (i--)
+	{
+		operation = calculate_operation_given_first_index(i);
+		if (operation_compare(operation, cheapest_operation) == -1)
+		{
+			operation_destroy(cheapest_operation);
+			cheapest_operation = operation;
+		}
+		else
+		{
+			operation_destroy(operation);
+		}
+	}
+	operation_apply(operation);
 }
