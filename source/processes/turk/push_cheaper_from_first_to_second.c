@@ -6,109 +6,31 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:56:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 04:05:44 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:51:46 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "turk.h"
 
-int	calculate_price(
-	t_stack a, 
-	t_stack b, 
-	int i, 
-	int j
-){
-	int	prices[4];
-	int	distances[2];
-	int	reverse_distances[2];
-
-	distance[0] = stack_get_height(a) - i;
-	distance[1] = stack_get_height(b) - j;
-	reverse_distances[0] = i;
-	reverse_distances[1] = j;
-
-	// rotate A, rotate B
-	price[0] = min(distance[0], distance[1]) + abs(distance[0] - distance[1]) + 1;
-
-	// rotate A, reverse rotate B
-	price[1] = distance[0] + reverse_distances[1] + 1;
-
-	// reverse rotate A, rotate B
-	price[2] = reverse_distances[0] + distances[1] + 1;
-
-	// reverse rotate A, reverse rotate B
-	price[3] = reverse_distances[0] + reverse_distances[b] + 1;
-
-	return (min(prices[0], prices[1], prices[2], prices[3]));
-}
-
-void	push_from_a_to_b_given_indexes(
-	t_stack a,
-	t_stack b,
-	int i,
-	int j	
-){
-	
-}
-
 void	push_cheaper_from_first_to_second(t_pair stacks)
 {
-	int	current_price;
-	int	min_price;
-	int	counters[2];
-	int	distances[2];
-	int	indexes[2];
+	int	i;
+	int	j;
+	int	best_i;
+	int	best_j;
+	int best_price;
 
-	min_price = -1;
-	counter[A] = 0;
-	while (counter[A] < stack_get_height(a))
-	{
-		counter[B] = 0;
-		while (counter[B] < stack_get_height(b))
-		{
-			if (stack_peek(b))
-			counter[B]++;
-		}
-		indexes[A] = counter[A];
-		current_price = calculate_price(a, b, indexes);
-		if (min_price == -1 || min_price > price)
-		{
-			min_price = price;
-			indexes[0] = i;
-			indexes[1] = j;
-		}
-		i++;
-	}
-	push_from_a_to_b_given_indexes(a, b, indexes[0], indexes[1]);
-}
-
-void	push_cheaper_from_first_to_second(t_pair stacks)
-{
-	// iterate on the first stack
-	// for each iteration calculate price
-	//		iterate on the second stack
-	//		find the first less than
-	//		calculate price and return
-	// store the cheapest
-	// do the operation
-
-	int			i;
-	t_operation	operation;
-	t_operation cheapest_operation;
-
+	best_price = -1;
 	i = stack_get_height(stacks->first);
 	while (i--)
 	{
-		operation = calculate_operation_given_first_index(i);
-		if (operation_compare(operation, cheapest_operation) == -1)
+		j = get_first_less_than(stacks, i);	
+		if (best_price == -1 || best_price > get_price(stacks, i, j))
 		{
-			operation_destroy(cheapest_operation);
-			cheapest_operation = operation;
-		}
-		else
-		{
-			operation_destroy(operation);
+			best_price = get_price(stacks, i, j);
+			best_i = i;
+			best_j = j;
 		}
 	}
-	operation_apply(operation);
+	push_from_first_to_second(stacks, i, j);
 }
