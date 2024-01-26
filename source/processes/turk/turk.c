@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 03:11:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 03:29:40 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:16:33 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	turk(t_pair stacks)
 	}
 	else
 	{
-		solve_for_more_than_three(stacks);	
+		solve_for_more_than_three(stacks);
 	}
 }

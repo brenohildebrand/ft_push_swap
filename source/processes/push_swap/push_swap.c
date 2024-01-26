@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:05:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 00:55:09 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:05:34 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char *argv[])
 	t_pair	stacks;
 
 	validate_arguments(argc, argv);
-	stacks = create_both_stacks();
+	stacks = create_pair();
 	initialize_first_stack(stacks->first, argv);
 	turk(stacks);
-	destroy_both_stacks(stacks);
+	destroy_pair(stacks);
 	return (0);
 }

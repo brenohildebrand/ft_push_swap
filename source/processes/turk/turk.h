@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:57:45 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 20:51:56 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:17:07 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@
 # include "pair.h"
 
 void	turk(t_pair stacks);
-
 
 #endif

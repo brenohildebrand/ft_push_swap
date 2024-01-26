@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:23:24 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 22:51:25 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:13:55 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_first_less_than(t_pair stacks, int i)
 			j = mid;
 			low = mid + 1;
 		}
-		else if
+		else
 		{
 			low = mid - 1;
 		}

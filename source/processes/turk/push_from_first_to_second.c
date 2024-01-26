@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 23:45:27 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 18:37:39 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:15:14 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	push_from_first_to_second(t_pair stacks, int i, int j)
 
 	possibility = get_possibility(stacks, i, j);
 	if (possibility == 0)
-		zero(stacks, i, j );
+		zero(stacks, i, j);
 	else if (possibility == 1)
 		one(stacks, i, j);
 	else if (possibility == 2)

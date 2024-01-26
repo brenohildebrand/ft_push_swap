@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:51:54 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 01:18:24 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/26 20:12:12 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,11 @@ t_pair		pair_create(void);
 void		pair_init(t_pair pair);
 t_pair		pair_build(void);
 void		pair_destroy(t_pair pair);
+
+void		pair_rotate(t_pair pair);
+void		pair_reverse_rotate(t_pair pair);
+
+void		pair_rotate_and_print(t_pair pair);
+void		pair_reverse_rotate_and_print(t_pair pair);
 
 #endif
