@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:56:21 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 20:51:46 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:53:35 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	push_cheaper_from_first_to_second(t_pair stacks)
 	i = stack_get_height(stacks->first);
 	while (i--)
 	{
-		j = get_first_less_than(stacks, i);	
+		j = get_first_less_than(stacks, i);
 		if (best_price == -1 || best_price > get_price(stacks, i, j))
 		{
 			best_price = get_price(stacks, i, j);

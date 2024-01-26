@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_price.c                                        :+:      :+:    :+:   */
+/*   get_possibility.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 22:56:39 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/25 23:08:06 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/01/25 23:09:48 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/01/25 23:10:12 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	calculate(t_pair stacks, int i, int j, int possibility)
 				stacks_get_height(stacks->second) - j + 1);
 }
 
-int	get_price(t_pair stacks, int i, int j)
+int	get_possibility(t_pair stacks, int i, int j)
 {
 	int	possibility;
 	int	best_possibility;
@@ -44,5 +44,5 @@ int	get_price(t_pair stacks, int i, int j)
 		}
 		possibility++;
 	}
-	return (best_price);
+	return (best_possibility);
 }
