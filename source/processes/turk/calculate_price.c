@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_possibility.c                                  :+:      :+:    :+:   */
+/*   calculate_price.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 23:09:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 00:18:31 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/01/26 00:17:52 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/01/26 00:18:08 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "turk.h"
 
-int	get_possibility(t_pair stacks, int i, int j)
+int	calculate_price(t_pair stacks, int i, int j, int possibility)
 {
-	int	possibility;
-	int	best_possibility;
-	int	best_price;
-	int	price;
+	int	ri;
+	int	rj;
 
-	best_price = -1;
-	possibility = 0;
-	while (possibility < 4)
-	{
-		price = calculate_price(stacks, i, j, possibility);
-		if (best_price == -1 || price < best_price)
-		{
-			best_price = price;
-			best_possibility = possibility;
-		}
-		possibility++;
-	}
-	return (best_possibility);
+	ri = stack_get_height(stacks->first) - i;
+	rj = stack_get_height(stacks->second) - j;
+	if (possibility == 0)
+		return (min(i, j) + max(i, j) - min(i, j) + 1);
+	else if (possibility == 1)
+		return (i + rj + 1);
+	else if (possibility == 2)
+		return (ri + j + 1);
+	else
+		return (min(ri, rj) + max(ri, rj) - min(ri, rj) + 1);
 }
