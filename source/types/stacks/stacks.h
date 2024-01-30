@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pair.h                                             :+:      :+:    :+:   */
+/*   stacks.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:51:54 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 20:12:12 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:47:46 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PAIR_H
-# define PAIR_H
+#ifndef STACKS_H
+# define STACKS_H
 
 # include "framework.h"
 # include "stack.h"
 
-typedef struct s_pair	*t_pair;
+typedef struct s_stacks	*t_stacks;
 
-struct s_pair {
+struct s_stacks {
 	t_stack	first;
 	t_stack	second;
 };
 
-t_typedata	pair(void);
-t_pair		pair_create(void);
-void		pair_init(t_pair pair);
-t_pair		pair_build(void);
-void		pair_destroy(t_pair pair);
+t_typedata	stacks(void);
+t_stacks	stacks_create(void);
+void		stacks_init(t_stacks stacks);
+t_stacks	stacks_build(void);
+void		stacks_destroy(t_stacks stacks);
 
-void		pair_rotate(t_pair pair);
-void		pair_reverse_rotate(t_pair pair);
+void		stacks_rotate(t_stacks stacks);
+void		stacks_reverse_rotate(t_stacks stacks);
 
-void		pair_rotate_and_print(t_pair pair);
-void		pair_reverse_rotate_and_print(t_pair pair);
+void		stacks_rotate_and_print(t_stacks stacks);
+void		stacks_reverse_rotate_and_print(t_stacks stacks);
 
 #endif
