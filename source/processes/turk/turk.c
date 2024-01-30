@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 03:11:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 20:16:33 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:02:54 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	turk(t_pair stacks)
 	{
 		return ;
 	}
-	else if (stack_get_heigth(stacks->first) == 1)
+	else if (stack_get_height(stacks->first) == 1)
 	{
 		return ;
 	}
