@@ -36,9 +36,9 @@ Push 2 to stack B. Solve stack A for three and push from stack B to stack A in t
 
 Then for more than 5 do the following:
 
--> create another stack and sort it to know the exact final position of each number.
+-> ~~create another stack and sort it to know the exact final position of each number.~~
 
--> find the longest subsquence that is already in the final order and keep it. Push all other numbers to stack B.
+-> find the longest subsquence that is already sorted/in the final order and keep it. Push all other numbers to stack B.
 
 -> calculate the price for each number in stack B to be in it's correct position in stack A. Push the cheapest.
 

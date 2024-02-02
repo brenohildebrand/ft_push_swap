@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 06:12:09 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 06:18:43 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/02 10:12:52 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ t_stack	stack_create(void)
 	t_stack	instance;
 	
 	instance = (t_stack)new(stack);
-	instance->content = NULL;
+	instance->head = NULL;
+	instance->tail = NULL;
 	instance->height = 0;
-	instance->max_height = 0;
-	return (instance;)
+	return (instance);
 }
+

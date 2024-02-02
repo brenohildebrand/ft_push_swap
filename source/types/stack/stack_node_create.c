@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shared_get.c                                       :+:      :+:    :+:   */
+/*   stack_node_create.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 04:54:38 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 04:56:24 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/02 10:37:27 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/02 10:38:50 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shared.h"
+#include "stack.h"
 
-t_shared	shared_get(void)
+t_stack_node	stack_node_create(void)
 {
-	static struct s_shared	shared = {
-		.stacks = NULL,
-		.c = 0,
-	};
+	t_stack_node	instance;
 
-	return (&shared);
+	instance = (t_stack_node)new(stack_node);
+	instance->value = 0;
+	instance->next = NULL;
+	instance->previous = NULL;
+	return (instance);
 }

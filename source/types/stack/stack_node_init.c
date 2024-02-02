@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_node_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 21:03:26 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 06:33:27 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/02 10:39:01 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/02 10:39:51 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "stack.h"
 
-# include "framework.h"
-# include "string.h"
-
-# include <stdlib.h>
-# include <unistd.h>
-
-int		push_swap(int argc, char *argv[]);
-// void	initialize_first_stack(t_stack first, char *argv[]);
-void	validate_argc(int argc);
-void	validate_arguments(int argc, char *argv[]);
-void	validate_argv(char *argv[]);
-
-#endif
+void	stack_node_init(t_stack_node node, t_i32 value)
+{
+	node->value = value;
+}

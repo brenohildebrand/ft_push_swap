@@ -6,13 +6,13 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:05:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 04:58:24 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/02 06:33:15 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	push_swap(int argc, char *argv[])
 {
 	// t_stacks	stacks;
 
