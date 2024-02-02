@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_two_from_a_to_b.c                             :+:      :+:    :+:   */
+/*   shared_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:47:41 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 20:15:22 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/02 04:54:38 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/02 04:56:24 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "turk.h"
+#include "shared.h"
 
-void	push_two_from_a_to_b(t_stack a, t_stack b)
+t_shared	shared_get(void)
 {
-	stack_push(b, stack_pop(a));
-	stack_push(b, stack_pop(a));
+	static struct s_shared	shared = {
+		.stacks = NULL,
+		.c = 0,
+	};
+
+	return (&shared);
 }

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_for_more_than_three.c                        :+:      :+:    :+:   */
+/*   validate_argc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 03:29:01 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/01/26 20:15:31 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/01/31 13:58:33 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/02 05:10:19 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "turk.h"
+#include "push_swap.h"
 
-void	solve_for_more_than_three(t_pair stacks)
+void	validate_argc(int argc)
 {
-	push_two_from_first_to_second(stacks);
-	while (stack_get_height(stacks->first) > 2)
-		push_cheaper_from_first_to_second(stacks);
-	push_everything_from_second_to_first(stacks);
+	if (argc == 1)
+	{
+		print("Usage: ./push_swap <list of numbers>");
+		exit(1);
+	}
 }
