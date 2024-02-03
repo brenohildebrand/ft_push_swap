@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   stack_peek.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 18:55:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 16:13:06 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 16:17:39 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
-void	validate_arguments(int argc, char *argv[])
+t_i32	stack_peek(t_stack stack, t_u32 index)
 {
-	validate_argc(argc);
-	validate_argv(argv);
+	t_stack_node	current;
+
+	if (index >= stack->height)
+	{
+		debug("You tried to peek at an invalid index in a stack.");
+		return (0);	
+	}
+	current = stack->head;
+	while (index)
+	{
+		current = current->next;
+		index--;
+	}
+	return (current->value);
 }

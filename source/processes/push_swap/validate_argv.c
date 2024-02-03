@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:59:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 05:27:53 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:32:15 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_for_integers(char *argv[])
 	while (argv[i])
 	{
 		string = string_build(argv[i]);
-		if (!string_is_integer(string))
+		if (!string_is_i32(string))
 		{
 			print("All given numbers should fit in a 32-bit integer.");
 			string_destroy(string);

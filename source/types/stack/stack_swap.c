@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 18:55:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 17:39:15 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 17:42:32 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
-void	validate_arguments(int argc, char *argv[])
+void	stack_swap(t_stack stack)
 {
-	validate_argc(argc);
-	validate_argv(argv);
+	t_stack_node	aux;
+
+	aux = stack->head;
+	stack->head = stack->head->next;
+	stack->head->previous = NULL;
+	aux->previous = stack->head;
+	aux->next = stack->head->next;	
+	stack->head->next = aux;
 }

@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push.c                                       :+:      :+:    :+:   */
+/*   julien.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 07:53:24 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 17:19:18 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 19:02:02 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 19:16:46 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "julien.h"
 
-void	stack_push(t_stack stack, t_i32 value)
+void	julien(t_stack a, t_stack b)
 {
-	t_stack_node	node;
-
-	node = stack_node_build(value);
-	if (stack->head == NULL)
+	if (stack_get_height(a) == 1)
 	{
-		stack->head = node;
-		stack->tail = node;
+		julien_for_one(a, b);
+	}
+	else if (stack_get_height(a) == 2)
+	{
+		julien_for_two(a, b);
+	}
+	else if (stack_get_height(a) == 3)
+	{
+		julien_for_three(a, b);
+	}
+	else if  (stack_get_height(a) == 4)
+	{
+		julien_for_four(a, b);
+	}
+	else if (stack_get_height(a) == 5)
+	{
+		julien_for_five(a, b);
 	}
 	else
 	{
-		node->previous = stack->tail;
-		stack->tail->next = node;
-		stack->tail = node;
+		julien_for_more_than_five(a, b);
 	}
-	stack->height++;
 }

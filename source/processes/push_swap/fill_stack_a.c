@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   fill_stack_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 18:55:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 18:14:55 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 18:44:20 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	validate_arguments(int argc, char *argv[])
+void	fill_stack_a(t_stack a, char *argv[])
 {
-	validate_argc(argc);
-	validate_argv(argv);
+	t_u32		i;
+	t_string	string;
+
+	i = 1;
+	while (argv[i])
+	{
+		string = string_build(argv[i]);
+		stack_push(a, string_to_i32(string));
+		string_destroy(string);
+		i++;
+	}
 }

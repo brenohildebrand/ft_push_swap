@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 18:55:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 16:43:12 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 17:00:35 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
-void	validate_arguments(int argc, char *argv[])
+int	main(void)
 {
-	validate_argc(argc);
-	validate_argv(argv);
+	t_stack	stack;
+
+	stack = stack_build();
+	stack_push(stack, 42);
+	stack_rotate(stack);
+	stack_push(stack, 60);
+	if (stack_peek(stack, 0) != 42)
+	{
+		stack_destroy(stack);
+		return (1);
+	}
+	stack_rotate(stack);
+	if (stack_peek(stack, 0) != 60)
+	{
+		stack_destroy(stack);
+		return (1);
+	}
+	stack_rotate(stack);
+	stack_destroy(stack);
+	return (0);
 }

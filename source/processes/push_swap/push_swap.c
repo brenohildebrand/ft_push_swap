@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:05:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 06:33:15 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:59:12 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int	push_swap(int argc, char *argv[])
 {
-	// t_stacks	stacks;
+	t_stack	a;
+	t_stack	b;
 
 	validate_arguments(argc, argv);
-	// stacks = stacks_create();
-	// initialize_first_stack(stacks->first, argv);
-	// julien(stacks);
-	// destroy_stacks(stacks);
+	a = stack_build();
+	b = stack_build();
+	fill_stack_a(a, argv);
+	julien(a, b);
+	stack_destroy(a);
+	stack_destroy(b);
 	return (0);
 }

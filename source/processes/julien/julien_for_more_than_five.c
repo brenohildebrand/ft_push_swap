@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   julien_for_more_than_five.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 18:55:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/03 19:22:59 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/03 19:57:07 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "julien.h"
 
-void	validate_arguments(int argc, char *argv[])
+void	julien_for_more_than_five(t_stack a, t_stack b)
 {
-	validate_argc(argc);
-	validate_argv(argv);
+	(void)a;
+	(void)b;
+	return ;
 }

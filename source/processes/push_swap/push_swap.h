@@ -6,23 +6,25 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:03:26 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 06:33:27 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/03 20:08:52 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "framework.h"
+# include "julien.h"
+
 # include "string.h"
+# include "stack.h"
 
 # include <stdlib.h>
 # include <unistd.h>
 
 int		push_swap(int argc, char *argv[]);
-// void	initialize_first_stack(t_stack first, char *argv[]);
-void	validate_argc(int argc);
+void	fill_stack_a(t_stack a, char *argv[]);
 void	validate_arguments(int argc, char *argv[]);
+void	validate_argc(int argc);
 void	validate_argv(char *argv[]);
 
 #endif
