@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_first_stack.c                           :+:      :+:    :+:   */
+/*   julien_push_cheapest.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 03:13:51 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 04:59:56 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/04 19:47:34 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/04 20:46:17 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "julien.h"
 
-// void	initialize_first_stack(t_stack first, char *argv[])
-// {
-// 	unsigned int	i;
+// -- Push cheapest.
+// -- Pushes the cheapest from stack b to stack a.
 
-// 	i = 1;
-// 	while (argv[i])
-// 		i++;
-// 	while (i > 0)
-// 	{
-// 		stack_push(first, ft_atoi(argv[i]));
-// 		i--;
-// 	}
-// }
+void	julien_push_cheapest(t_stack a, t_stack b)
+{
+	t_u32	i;
+
+	i = get_index();
+	
+}
+
+// go through B ... for each one calculate the price ... keep the index for the cheapest.
+// recalculate how to do it the cheapest way and do it.

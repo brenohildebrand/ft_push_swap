@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:15:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 17:30:23 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:36:00 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,12 @@
 
 void	stack_reverse_rotate(t_stack stack)
 {
-	t_stack_node	aux;
-
 	if (stack->height == 1)
-	{
 		return ;
-	}
-	else if (stack->height == 2)
-	{
-		aux = stack->head;
-		stack->head = stack->tail;
-		stack->head->next = aux;
-		stack->head->previous = NULL;
-		stack->tail = aux;
-		stack->tail->next = NULL;
-		stack->tail->previous = stack->head;		
-	}
-	else
-	{
-		aux = stack->head;
-		stack->head = stack->tail;
-		stack->head->next = aux;
-		stack->head->previous = NULL;
-		stack->tail = stack->tail->previous;
-		stack->tail->next = NULL;
-	}
+	stack->tail->next = stack->head;
+	stack->head->previous = stack->tail;
+	stack->tail = stack->tail->previous;
+	stack->head = stack->tail->next;
+	stack->tail->next = NULL;
+	stack->head->previous = NULL;
 }
