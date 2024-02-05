@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 20:03:15 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/03 20:08:56 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:10:52 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct s_stack {
 	t_stack_node	head;
 	t_stack_node	tail;
 	t_u32			height;
+	t_stack_node	cursor;
 };
 
 struct s_stack_node {
@@ -52,6 +53,11 @@ void			stack_swap(t_stack stack);
 t_i32			stack_peek(t_stack stack, t_u32 index);
 t_i32			stack_is_sorted(t_stack stack);
 t_u32			stack_get_height(t_stack stack);
+
+t_stack_node	stack_start(t_stack stack);
+t_stack_node	stack_next(t_stack stack);
+t_stack_node	stack_previous(t_stack stack);
+t_stack_node	stack_end(t_stack stack);
 
 t_typedata		stack_node(void);
 t_stack_node	stack_node_create(void);
