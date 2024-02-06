@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:59:14 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/05 18:30:59 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:57:03 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,41 +24,23 @@
 
 void	julien_keep_lss(t_stack a, t_stack b)
 {
-	t_u32		i;
-	t_u32		j;
-	t_u32		max;
 	t_vector	lss;
+	t_u32		i;
 
-	lss = vector_build();
-	init(lss, a, b);
-	build(lss, a, b);
+	lss = julien_get_lss(a);
 	i = 0;
-	while (i < 2 * stack_get_height(a))
+	while (i < vector_get_length(lss))
 	{
-		vector_push(lss, vector_build());
-		i++;
-	}
-	i = 0;
-	vector_push(vector_get(lss, 0), integer_build(0));
-	while (i < 2 * stack_get_height(a))
-	{
-		j = 0;
-		max = 0;
-		while (j < i)
+		if (stack_peek(a, 0) == integer_get_value(vector_get(lss, i)))
 		{
-			if (vector_get_length(vector_get(lss, i)) > max && stack_peek(a, i) > stack_peek(a, j))
-			{
-				
-			}
-			j++
+			stack_push(b, stack_pop(a));
+			print("pb");
+			i++;
 		}
-		vector_push(vector_get(lss, 0), integer_build(i));
+		else
+		{
+			stack_rotate(a);
+		}
 	}
 	vector_destroy(lss);
 }
-
-// lss
-// get_lss_index(); O(n^2)
-// find path
-// path could be a vector with the nodes in order
-// rotate a pushing everyone but path
