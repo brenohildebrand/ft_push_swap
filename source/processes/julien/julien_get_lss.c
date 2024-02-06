@@ -6,21 +6,64 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:51:19 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/05 22:18:46 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/06 03:19:20 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "julien.h"
 
+static void	fill_arr_and_map(t_stack a, t_vector lss, t_u32 *arr, t_u32 *map)
+{
+	t_u32	length;
+	t_u32	i;
+	t_u32	j;
+	t_u32	best;
+
+	length = stack_get_height(a) * 2;
+	i = 0;
+	while (i < length)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (stack_peek(a, i) > stack_peek(a, j) && arr[j] >= arr[best])
+			{
+				best = j;
+			}
+			j++;
+		}
+		arr[i] = arr[best] + 1;
+		map[i] = best;
+		i++;
+	}
+}
+
+static void	fill_lss(t_stack a, t_vector lss, t_u32 *arr, t_u32 *map)
+{
+	// calculate arr and map
+	fill_arr_and_map(a, lss, arr, map);
+	// get best from range [length / 2 - length]
+	// push in reverse order
+	// vector_reverse(lss)
+}
+
 t_vector	julien_get_lss(t_stack a)
 {
 	t_vector	lss;
 	t_u32		*map;
-	t_u32		*longest;
+	t_u32		*arr;
+	t_u32		length;
 
+	length = stack_get_height(a) * 2;
 	lss = vector_build();
-	map = allocate(stack_get_height(a) * 2 * sizeof(t_u32));
-	longest = allocate(stack_get_height(a) * 2 * sizeof(t_u32));
+	arr = allocate(length * sizeof(t_u32));
+	map = allocate(length * sizeof(t_u32));
+	fill_lss(a, lss, arr, map);
+	deallocate(lss);
+	deallocate(map);
+	return (lss);
+	
+
 
 	
 	// -------------------------------------------------------------------------
