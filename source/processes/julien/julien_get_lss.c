@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:51:19 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/09 07:12:39 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:39:01 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,65 @@
 static void	push_in_reverse_order(
 	t_vector lss,
 	t_vector map,
-	unsigned int best_index
+	int best_index
 ){
-	unsigned int	i;
+	int	i;
 
 	i = best_index;
-	while (map[i] != i)
+	while (integer_get(vector_get(map, i)) != i)
 	{
-		vector_push(lss, integer_create((int)i));
-		i = map[i];
+		vector_push(lss, integer_create(i));
+		i = integer_get(vector_get(map, i));
 	}
 }
 
-static void	fill_best_and_map(t_stack a, t_vector lss, t_vector best, t_vector map)
+static void	fill_best_and_map(t_stack a, t_vector best, t_vector map)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	best_j;
+	int	i;
+	int	j;
+	int	best_j;
 
-	i = 0;
+	vector_push(best, integer_create(1));
+	i = 1;
 	while (i < stack_get_height(a) * 2)
 	{
 		j = 0;
+		best_j = i;
 		while (j < i)
 		{
-			if (stack_peek(a, i) > stack_peek(a, j) && 
-				integer_compare(vector_get(best, j), vector_get(best, best_j)) >= 0)
+			if (integer_get(stack_peek(a, i)) > integer_get(stack_peek(a, j)) && 
+				integer_get(vector_get(best, j)) >= integer_get(vector_get(best, best_j)))
 				best_j = j;
 			j++;
 		}
-		best[i] = best[best_j] + 1;
-		map[i] = best_j;
+		vector_push(best, integer_create(integer_get(vector_get(best, best_j)) + 1));
+		vector_push(map, integer_create(best_j));
 		i++;
 	}
 }
 
-static unsigned int	compute_best_index(t_vector best)
+static int	compute_best_index(t_stack a, t_vector best)
 {
+	int	i;
+	int	best_index;
+
+	i = stack_get_height(a);
+	best_index = i;
 	while (i < stack_get_height(a) * 2)
 	{
-		condition = integer_compare(vector_get(best, i), vector_get(best, best_index)); 
-		if (condition == 1)
+		if (integer_get(vector_get(best, i)) > integer_get(vector_get(best, best_index)))
 			best_index = i;
 		i++;
 	}
+	return (best_index);
 }
 
 static void	fill_lss(t_stack a, t_vector lss, t_vector best, t_vector map)
 {
-	unsigned int	best_index;
+	int	best_index;
 
-	fill_best_and_map(a, lss, best, map);
-	best_index = compute_best_index(best);
+	fill_best_and_map(a, best, map);
+	best_index = compute_best_index(a, best);
 	push_in_reverse_order(lss, map, best_index);
 	vector_reverse(lss);
 }

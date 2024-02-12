@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:39:15 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/09 16:22:48 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/11 00:48:34 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	stack_swap(t_stack stack)
 	last_index = vector_get_length(stack->content) - 1;
 	next_to_last_index = last_index - 1;
 	last = vector_get(stack->content, last_index);
-	next_to_last = vector_get(stack->content, last_to_next_index);
+	next_to_last = vector_get(stack->content, next_to_last_index);
 	vector_set(stack->content, last_index, next_to_last);
 	vector_set(stack->content, next_to_last_index, last);
 }

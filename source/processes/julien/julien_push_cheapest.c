@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:47:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/05 15:23:44 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:41:13 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,83 +15,62 @@
 // -- Push cheapest.
 // -- Pushes the cheapest from stack b to stack a.
 
-static t_i32	get_price(
-	t_stack a,
-	t_stack b,
-	t_stack_node origin,
-	t_stack_node target
-){
-	t_u32	r_r;
-	t_u32	r_rr;
-	t_u32	rr_r;
-	t_u32	rr_rr;
-
-	r_r = (min(da, db) + abs(da - db) + 1);
-	r_rr = da + rdb + 1;
-	rr_r = rda + db + 1;
-	rr_rr = min(rda, rdb) + abs(rda - rdb) + 1;
-
-	return (min(r_r, r_rr, rr_r, rr_rr));
-}
-
-static t_stack_node	find_target(t_stack a, t_stack b, t_stack_node origin)
+static int	find_target(t_stack a, t_stack b, int origin)
 {
-	t_stack_node	current;
-	t_stack_node	target;
-	t_stack_node	minimum;
+	int	current;
+	int	target;
+	int	minimum;
 
-	current = stack_start(a);
-	target = NULL;
+	current = stack_get_height(a);
+	target = -1;
 	minimum = current;
-	while (current)
+	while (current--)
 	{
-		if (current->value < origin->value)
+		if (integer_get(stack_peek(a, current)) < integer_get(stack_peek(b, origin)))
 		{
-			if (target == NULL)
+			if (target == -1)
 				target = current;
-			else if (current->value > target->value)
+			else if (integer_get(stack_peek(a, current)) > integer_get(stack_peek(a, target)))
 				target = current;
 		}
-		if (current->value < minimum->value)
+		if (integer_get(stack_peek(a, current)) < integer_get(stack_peek(a, minimum)))
 			minimum = current;
-		current = stack_next(a);
 	}
-	if (target == NULL)
+	if (target == -1)
 		target = minimum;
 	return (target);
 }
 
-static t_stack_node	find_origin(t_stack a, t_stack b)
+static int	find_origin(t_stack a, t_stack b)
 {
-	t_stack_node	current;
-	t_stack_node	origin;
-	t_stack_node	target;
-	t_u32			price;
-	t_u32			best_price;
+	int	current;
+	int	origin;
+	int	target;
+	int	price;
+	int	best_price;
 
-	current = stack_start(b);
+	current = stack_get_height(a);
 	origin = current;
-	best_price = 4294967295;
-	while (current)
+	best_price =  2147483647;
+	while (current--)
 	{
 		target = find_target(a, b, origin);
-		price = get_price(a, b, origin, target);
+		price = julien_get_price(a, b, origin, target);
 		if (price <= best_price)
 		{
 			origin = current;
 			best_price = price;
 		}
-		current = stack_next(b);
 	}
 	return (origin);
 }
 
 void	julien_push_cheapest(t_stack a, t_stack b)
 {
-	t_stack_node	origin;
-	t_stack_node	target;
+	int	origin;
+	int	target;
 
 	origin = find_origin(a, b);
 	target = find_target(a, b, origin);
-	julien_push_from_b_to_a(a, b, origin, target);
+	julien_push(a, b, origin, target);
 }

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 21:05:48 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/08 22:31:26 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:36:33 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	push_swap(int argc, char *argv[])
 	validate_arguments(argc, argv);
 	a = stack_create();
 	b = stack_create();
-	fill_stack_a(a, argv);
+	fill_stack_a(a, argc, argv);
 	julien(a, b);
 	stack_destroy(a);
 	stack_destroy(b);

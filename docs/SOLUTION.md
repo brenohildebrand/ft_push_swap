@@ -17,6 +17,7 @@ if it's ordered and if it's not order it.
 
 Third case is when there are three items in the stack.
 
+one two three
 -> A B C -> nothing
 -> A C B -> sa -> C A B -> ra -> nothing
 -> B A C -> sa -> nothing

@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:59:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/08 22:16:55 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:23:26 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	check_for_integers(char *argv[])
 
 static void	check_for_duplicates(char *argv[])
 {
-	t_u32	i;
-	t_u32	j;
-	t_u32	k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 1;
 	while (argv[i])

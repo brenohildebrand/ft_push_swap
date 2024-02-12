@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 06:09:05 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/02 06:14:29 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/11 00:35:55 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/11 01:01:15 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "integer.h"
+#include <stdio.h>
 
-t_typedata	stack(void)
+void	stack_print(t_stack stack)
 {
-	static struct s_typedata	stack_typedata = {
-		.create = (t_any (*)(void))stack_create,
-		.destroy = (void (*)(t_any))stack_destroy,
-		.size = sizeof(struct s_stack)
-	};
+	int	i;
 
-	return (&stack_typedata);
+	debug("You should remove stack_print before submitting.");
+	i = 0;
+	while (i < stack_get_height(stack))
+	{
+		printf("%d ", integer_get(stack_peek(stack, i)));
+		i++;
+	}
+	printf("\n");
 }
