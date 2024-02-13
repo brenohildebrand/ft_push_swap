@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:47:34 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/10 16:41:13 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:28:22 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static int	find_target(t_stack a, t_stack b, int origin)
 	int	target;
 	int	minimum;
 
-	current = stack_get_height(a);
+	current = stack_get_height(a) - 1;
 	target = -1;
 	minimum = current;
-	while (current--)
+	while (current >= 0)
 	{
 		if (integer_get(stack_peek(a, current)) < integer_get(stack_peek(b, origin)))
 		{
@@ -35,6 +35,7 @@ static int	find_target(t_stack a, t_stack b, int origin)
 		}
 		if (integer_get(stack_peek(a, current)) < integer_get(stack_peek(a, minimum)))
 			minimum = current;
+		current--;
 	}
 	if (target == -1)
 		target = minimum;
@@ -49,10 +50,10 @@ static int	find_origin(t_stack a, t_stack b)
 	int	price;
 	int	best_price;
 
-	current = stack_get_height(a);
+	current = stack_get_height(b) - 1;
 	origin = current;
 	best_price =  2147483647;
-	while (current--)
+	while (current >= 0)
 	{
 		target = find_target(a, b, origin);
 		price = julien_get_price(a, b, origin, target);
@@ -61,6 +62,7 @@ static int	find_origin(t_stack a, t_stack b)
 			origin = current;
 			best_price = price;
 		}
+		current--;
 	}
 	return (origin);
 }

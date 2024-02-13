@@ -6,13 +6,14 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:55:26 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/10 16:55:36 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:45:03 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JULIEN_H
 # define JULIEN_H
 
+# include "push_swap.h"
 # include "integer.h"
 # include "stack.h"
 
@@ -29,5 +30,6 @@ t_vector	julien_get_lss(t_stack a);
 int			julien_get_price(t_stack a, t_stack b, int origin, int target);
 int			julien_get_option(t_stack a, t_stack b, int origin, int target);
 void		julien_push(t_stack a, t_stack b, int origin, int target);
+void		julien_adjust_a(t_stack a, t_stack b);
 
 #endif

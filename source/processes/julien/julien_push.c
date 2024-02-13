@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:39:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/10 17:41:19 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:38:09 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,87 @@
 // -- Push
 // -- Push origin from stack b to the top of target in stack a
 
-static void	r_r(t_stack a, t_stack b, int origin, int target)
+static void	rr_rr(t_stack a, t_stack b, int origin, int target)
 {
-	(void)a;
-	(void)b;
-	(void)origin;
-	(void)target;
-	while (origin--)
-		stack_rotate(b);
-	while (target--)
-		stack_rotate(a);
-}
+	int		min;
+	int		abs;
 
-static void	r_rr(t_stack a, t_stack b, int origin, int target)
-{
-	int	rbd;
-
-	(void)a;
-	(void)b;
-	(void)origin;
-	(void)target;
-	while (target--)
-		stack_rotate(a);
-	rbd = stack_get_height(b) - origin;
-	while (rbd--)
-		stack_reverse_rotate(b);
+	if (origin < target)
+		min = origin;
+	else
+		min = target;
+	while (min--)
+		rrr(a, b);
+	if (origin < target)
+	{
+		abs = target - origin;
+		while (abs--)
+			rra(a, b);
+	}
+	else
+	{
+		abs = origin - target;
+		while (abs--)
+			rrb(a, b);
+	}
 }
 
 static void	rr_r(t_stack a, t_stack b, int origin, int target)
 {
-	int	rda;
+	int	counter;
+
+	(void)a;
+	(void)b;
+	(void)origin;
+	(void)target;
+	while (target--)
+		rra(a, b);
+	counter = stack_get_height(b) - origin;
+	while (counter--)
+		rb(a, b);
+}
+
+static void	r_rr(t_stack a, t_stack b, int origin, int target)
+{
+	int	counter;
 
 	(void)a;
 	(void)b;
 	(void)origin;
 	(void)target;
 	while (origin--)
-		stack_rotate(b);
-	rda = stack_get_height(a) - target;
-	while (rda--)
-		stack_reverse_rotate(a);
+		rrb(a, b);
+	counter = stack_get_height(a) - target;
+	while (counter--)
+		ra(a, b);
 }
 
-static void	rr_rr(t_stack a, t_stack b, int origin, int target)
+static void	r_r(t_stack a, t_stack b, int origin, int target)
 {
-	int	rda;
-	int	rdb;
 
-	(void)a;
-	(void)b;
-	(void)origin;
-	(void)target;
-	rda = stack_get_height(a) - target;
-	rdb = stack_get_height(b) - origin;
-	while (rda--)
-		stack_reverse_rotate(a);
-	while (rdb--)
-		stack_reverse_rotate(b);
+	int		min;
+	int		abs;
+
+	origin = stack_get_height(b) - origin;
+	target = stack_get_height(a) - target;
+	if (origin < target)
+		min = origin;
+	else
+		min = target;
+	while (min--)
+		rr(a, b);
+	if (origin < target)
+	{
+		abs = target - origin;
+		while (abs--)
+			ra(a, b);
+	}
+	else
+	{
+		abs = origin - target;
+		while (abs--)
+			rb(a, b);
+	}
 }
 
 void		julien_push(t_stack a, t_stack b, int origin, int target)
@@ -87,5 +111,5 @@ void		julien_push(t_stack a, t_stack b, int origin, int target)
 		rr_r(a, b, origin, target);
 	else if (option == 3)
 		rr_rr(a, b, origin, target);
-	stack_push(a, stack_pop(b));
+	pa(a, b);
 }

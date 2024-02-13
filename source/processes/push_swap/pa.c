@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julien_for_more_than_five.c                        :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:22:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/12 21:44:53 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/12 19:32:26 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/12 19:35:04 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "julien.h"
+#include "push_swap.h"
 
-void	julien_for_more_than_five(t_stack a, t_stack b)
+void	pa(t_stack a, t_stack b)
 {
-	julien_keep_lss(a, b);
-	while (stack_get_height(b))
-		julien_push_cheapest(a, b);
-	julien_adjust_a(a, b);
+	if (stack_get_height(b) == 0)
+		return ;
+	stack_push(a, stack_pop(b));
+	print("pa");
 }

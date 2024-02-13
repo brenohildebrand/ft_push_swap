@@ -6,15 +6,15 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:57:46 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/10 16:59:27 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:32:58 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "julien.h"
 
-static int	get_r_r(t_stack a, t_stack b, int origin, int target)
+static int	get_rr_rr(t_stack a, t_stack b, int origin, int target)
 {
-	int	r_r;
+	int	rr_rr;
 	int	min;
 	int	abs;
 	
@@ -32,20 +32,8 @@ static int	get_r_r(t_stack a, t_stack b, int origin, int target)
 		min = target;
 		abs = origin - target;
 	}
-	r_r = min + abs + 1;
-	return (r_r);
-}
-
-static int	get_r_rr(t_stack a, t_stack b, int origin, int target)
-{
-	int	r_rr;
-
-	(void)a;
-	(void)b;
-	(void)origin;
-	(void)target;
-	r_rr = target + (stack_get_height(b) - origin) + 1;
-	return (r_rr);
+	rr_rr = min + abs + 1;
+	return (rr_rr);
 }
 
 static int	get_rr_r(t_stack a, t_stack b, int origin, int target)
@@ -56,36 +44,48 @@ static int	get_rr_r(t_stack a, t_stack b, int origin, int target)
 	(void)b;
 	(void)origin;
 	(void)target;
-	rr_r = (stack_get_height(a) - target) + origin + 1;
+	rr_r = target + (stack_get_height(b) - origin) + 1;
 	return (rr_r);
 }
 
-static int	get_rr_rr(t_stack a, t_stack b, int origin, int target)
+static int	get_r_rr(t_stack a, t_stack b, int origin, int target)
 {
-	int	rr_rr;
+	int	r_rr;
+
+	(void)a;
+	(void)b;
+	(void)origin;
+	(void)target;
+	r_rr = (stack_get_height(a) - target) + origin + 1;
+	return (r_rr);
+}
+
+static int	get_r_r(t_stack a, t_stack b, int origin, int target)
+{
+	int	r_r;
 	int	min;
 	int	abs;
-	int	rda;
-	int	rdb;
+	int	ra;
+	int	rb;
 	
 	(void)a;
 	(void)b;
 	(void)origin;
 	(void)target;
-	rda = stack_get_height(a) - target;
-	rdb = stack_get_height(b) - origin;
-	if (rda < rdb)
+	ra = stack_get_height(a) - target;
+	rb = stack_get_height(b) - origin;
+	if (ra < rb)
 	{
-		min = rda;
-		abs = rdb - rda;
+		min = ra;
+		abs = rb - ra;
 	}
 	else
 	{
-		min = rdb;
-		abs = rdb - rda;
+		min = rb;
+		abs = rb - ra;
 	}
-	rr_rr = min + abs + 1;
-	return (rr_rr);
+	r_r = min + abs + 1;
+	return (r_r);
 }
 
 int	julien_get_option(t_stack a, t_stack b, int origin, int target)

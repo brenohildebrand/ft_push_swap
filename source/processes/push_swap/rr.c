@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julien_for_more_than_five.c                        :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 19:22:59 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/12 21:44:53 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/02/12 19:50:23 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/02/12 19:50:52 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "julien.h"
+#include "push_swap.h"
 
-void	julien_for_more_than_five(t_stack a, t_stack b)
+void	rr(t_stack a, t_stack b)
 {
-	julien_keep_lss(a, b);
-	while (stack_get_height(b))
-		julien_push_cheapest(a, b);
-	julien_adjust_a(a, b);
+	stack_rotate(a);
+	stack_rotate(b);
+	print("rr");
 }
