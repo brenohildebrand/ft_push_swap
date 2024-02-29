@@ -1,4 +1,4 @@
-build/default/objects/push_swap.o: source/push_swap.c \
+build/tests/objects/validate_arguments.o: tests/validate_arguments.c \
  /home/bhildebr/github/ft_framework/source/types/framework/framework.h \
  /home/bhildebr/github/ft_framework/source/functions/functions.h \
  /home/bhildebr/github/ft_framework/source/types/i32/i32.h \
@@ -14,4 +14,4 @@ build/default/objects/push_swap.o: source/push_swap.c \
  /home/bhildebr/github/ft_framework/source/types/map/map.h \
  /home/bhildebr/github/ft_framework/source/types/memtree/memtree.h \
  /home/bhildebr/github/ft_framework/source/types/type/type.h \
- source/push_swap.h
+ /home/bhildebr/github/ft_push_swap/source/push_swap.h

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/28 20:54:40 by                   #+#    #+#              #
-#    Updated: 2024/02/28 20:54:40 by                  ###   ########.fr        #
+#    Created: 2024/02/29 16:04:05 by                   #+#    #+#              #
+#    Updated: 2024/02/29 16:04:05 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,8 @@ DEBUG = ./build/debug/bin/push_swap
 DEFAULT = ./build/default/bin/push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99 -Dpush_swap=main -g
-CPATHS = \
-	-include framework.h \
+CFLAGS = -Wall -Wextra -Werror -std=c99 -g
+CPATHS = 	-include framework.h \
 	-include functions.h \
 	-include any.h \
 	-include cstring.h \
@@ -60,21 +59,29 @@ CPATHS = \
 	-iquote /home/bhildebr/github/ft_push_swap/source
 
 SOURCES = \
-	./source/push_swap.c
+	./source/push_swap.c \
+	./source/validate_arguments.c
 
-HEADERS = 
+HEADERS = \
+	push_swap.h
 
 OBJECTS = \
-	push_swap.o
+	push_swap.o \
+	validate_arguments.o \
+	main.o
 
 DEPENDENCIES = \
-	push_swap.d
+	push_swap.d \
+	validate_arguments.d
 
-TESTS = 
+TESTS = \
+	build/tests/bin/validate_arguments
 
-TESTS_OBJECTS = 
+TESTS_OBJECTS = \
+	build/tests/objects/validate_arguments.o
 
-TESTS_DEPENDENCIES = 
+TESTS_DEPENDENCIES = \
+	build/tests/dependencies/validate_arguments.d
 
 DEBUG_DIR = ./build/debug
 DEFAULT_DIR = ./build/default
@@ -98,12 +105,12 @@ $(DEFAULT_LIBFRAMEWORK):
 
 debug: $(DEBUG_LIBFRAMEWORK) $(DEBUG)
 $(DEBUG): CFLAGS += -DDEBUG -g
-$(DEBUG): $(DEBUG_OBJECTS) | $(DEBUG_DIR)
-	@$(CC) $(CFLAGS) -o $(DEBUG_DIR)/bin/$(NAME) $(DEBUG_OBJECTS) $(DEBUG_LIBFRAMEWORK)
+$(DEBUG): $(filter-out $(DEBUG_DIR)/objects/push_swap.o, $(DEBUG_OBJECTS)) | $(DEBUG_DIR)
+	@$(CC) $(CFLAGS) -o $(DEBUG_DIR)/bin/$(NAME) $(filter-out $(DEBUG_DIR)/objects/push_swap.o, $(DEBUG_OBJECTS)) $(DEBUG_LIBFRAMEWORK)
 
 build: $(DEFAULT_LIBFRAMEWORK) $(DEFAULT)
-$(DEFAULT): $(DEFAULT_OBJECTS) | $(DEFAULT_DIR)
-	@$(CC) $(CFLAGS) -o $(DEFAULT_DIR)/bin/$(NAME) $(DEFAULT_OBJECTS) $(DEFAULT_LIBFRAMEWORK)
+$(DEFAULT): $(filter-out $(DEFAULT_DIR)/objects/push_swap.o, $(DEFAULT_OBJECTS)) | $(DEFAULT_DIR)
+	@$(CC) $(CFLAGS) -o $(DEFAULT_DIR)/bin/$(NAME) $(filter-out $(DEFAULT_DIR)/objects/push_swap.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK)
 
 tests: build $(TESTS)
 $(TESTS): $(TESTS_OBJECTS) | $(TESTS_DIR)
@@ -176,9 +183,6 @@ $(DEBUG_DIR)/objects/foreach.o: ./source/functions/foreach.c
 $(DEBUG_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEBUG_DIR)/objects/forkrun.o
 
-$(DEBUG_DIR)/objects/getg.o: ./source/functions/getg.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/getg.d -c ./source/functions/getg.c -o $(DEBUG_DIR)/objects/getg.o
-
 $(DEBUG_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEBUG_DIR)/objects/init.o
 
@@ -203,8 +207,11 @@ $(DEBUG_DIR)/objects/reduce.o: ./source/functions/reduce.c
 $(DEBUG_DIR)/objects/repeat.o: ./source/functions/repeat.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/repeat.d -c ./source/functions/repeat.c -o $(DEBUG_DIR)/objects/repeat.o
 
-$(DEBUG_DIR)/objects/setg.o: ./source/functions/setg.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/setg.d -c ./source/functions/setg.c -o $(DEBUG_DIR)/objects/setg.o
+$(DEBUG_DIR)/objects/retrieve.o: ./source/functions/retrieve.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/retrieve.d -c ./source/functions/retrieve.c -o $(DEBUG_DIR)/objects/retrieve.o
+
+$(DEBUG_DIR)/objects/share.o: ./source/functions/share.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEBUG_DIR)/objects/share.o
 
 $(DEBUG_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEBUG_DIR)/objects/slice.o
@@ -422,6 +429,12 @@ $(DEBUG_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 $(DEBUG_DIR)/objects/push_swap.o: ./source/push_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/push_swap.d -c ./source/push_swap.c -o $(DEBUG_DIR)/objects/push_swap.o
 
+$(DEBUG_DIR)/objects/validate_arguments.o: ./source/validate_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/validate_arguments.d -c ./source/validate_arguments.c -o $(DEBUG_DIR)/objects/validate_arguments.o
+
+$(DEBUG_DIR)/objects/main.o: ./source/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap.c -o $(DEBUG_DIR)/objects/main.o
+
 
 $(DEFAULT_DIR)/objects/allocate.o: ./source/functions/allocate.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/allocate.d -c ./source/functions/allocate.c -o $(DEFAULT_DIR)/objects/allocate.o
@@ -468,9 +481,6 @@ $(DEFAULT_DIR)/objects/foreach.o: ./source/functions/foreach.c
 $(DEFAULT_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEFAULT_DIR)/objects/forkrun.o
 
-$(DEFAULT_DIR)/objects/getg.o: ./source/functions/getg.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/getg.d -c ./source/functions/getg.c -o $(DEFAULT_DIR)/objects/getg.o
-
 $(DEFAULT_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEFAULT_DIR)/objects/init.o
 
@@ -495,8 +505,11 @@ $(DEFAULT_DIR)/objects/reduce.o: ./source/functions/reduce.c
 $(DEFAULT_DIR)/objects/repeat.o: ./source/functions/repeat.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/repeat.d -c ./source/functions/repeat.c -o $(DEFAULT_DIR)/objects/repeat.o
 
-$(DEFAULT_DIR)/objects/setg.o: ./source/functions/setg.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/setg.d -c ./source/functions/setg.c -o $(DEFAULT_DIR)/objects/setg.o
+$(DEFAULT_DIR)/objects/retrieve.o: ./source/functions/retrieve.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/retrieve.d -c ./source/functions/retrieve.c -o $(DEFAULT_DIR)/objects/retrieve.o
+
+$(DEFAULT_DIR)/objects/share.o: ./source/functions/share.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEFAULT_DIR)/objects/share.o
 
 $(DEFAULT_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEFAULT_DIR)/objects/slice.o
@@ -714,6 +727,12 @@ $(DEFAULT_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 $(DEFAULT_DIR)/objects/push_swap.o: ./source/push_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/push_swap.d -c ./source/push_swap.c -o $(DEFAULT_DIR)/objects/push_swap.o
 
+$(DEFAULT_DIR)/objects/validate_arguments.o: ./source/validate_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/validate_arguments.d -c ./source/validate_arguments.c -o $(DEFAULT_DIR)/objects/validate_arguments.o
+
+$(DEFAULT_DIR)/objects/main.o: ./source/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap.c -o $(DEFAULT_DIR)/objects/main.o
+
 
 $(TESTS_DIR)/objects/allocate.o: ./tests/functions/allocate.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/allocate.d -c ./tests/functions/allocate.c -o $(TESTS_DIR)/objects/allocate.o
@@ -735,6 +754,10 @@ $(TESTS_DIR)/objects/delete.o: ./tests/functions/delete.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/delete.d -c ./tests/functions/delete.c -o $(TESTS_DIR)/objects/delete.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/delete.o $(DEFAULT) -o $(TESTS_DIR)/bin/delete
 
+$(TESTS_DIR)/objects/display.o: ./tests/functions/display.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/display.d -c ./tests/functions/display.c -o $(TESTS_DIR)/objects/display.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/display.o $(DEFAULT) -o $(TESTS_DIR)/bin/display
+
 $(TESTS_DIR)/objects/error.o: ./tests/functions/error.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/error.d -c ./tests/functions/error.c -o $(TESTS_DIR)/objects/error.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/error.o $(DEFAULT) -o $(TESTS_DIR)/bin/error
@@ -746,10 +769,6 @@ $(TESTS_DIR)/objects/forkrun.o: ./tests/functions/forkrun.c
 $(TESTS_DIR)/objects/new.o: ./tests/functions/new.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/new.d -c ./tests/functions/new.c -o $(TESTS_DIR)/objects/new.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/new.o $(DEFAULT) -o $(TESTS_DIR)/bin/new
-
-$(TESTS_DIR)/objects/print.o: ./tests/functions/print.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/print.d -c ./tests/functions/print.c -o $(TESTS_DIR)/objects/print.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/print.o $(DEFAULT) -o $(TESTS_DIR)/bin/print
 
 $(TESTS_DIR)/objects/range.o: ./tests/functions/range.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/range.d -c ./tests/functions/range.c -o $(TESTS_DIR)/objects/range.o
@@ -790,5 +809,9 @@ $(TESTS_DIR)/objects/string.o: ./tests/types/string.c
 $(TESTS_DIR)/objects/type.o: ./tests/types/type.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/type.d -c ./tests/types/type.c -o $(TESTS_DIR)/objects/type.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/type.o $(DEFAULT) -o $(TESTS_DIR)/bin/type
+
+$(TESTS_DIR)/objects/validate_arguments.o: ./tests/validate_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/validate_arguments.d -c ./tests/validate_arguments.c -o $(TESTS_DIR)/objects/validate_arguments.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/validate_arguments.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/validate_arguments
 
 

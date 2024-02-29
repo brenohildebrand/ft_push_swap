@@ -1,4 +1,4 @@
-build/default/objects/push_swap.o: source/push_swap.c \
+build/debug/objects/validate_arguments.o: source/validate_arguments.c \
  /home/bhildebr/github/ft_framework/source/types/framework/framework.h \
  /home/bhildebr/github/ft_framework/source/functions/functions.h \
  /home/bhildebr/github/ft_framework/source/types/i32/i32.h \
