@@ -2,6 +2,26 @@
     "version": "0.2.0",
     "configurations": [
 		{
+			"name": "create_and_share_stacks",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/build/tests/bin/create_and_share_stacks",
+			"args": [],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build"
+		},
+		{
 			"name": "push_swap",
 			"type": "cppdbg",
 			"request": "launch",
@@ -26,26 +46,6 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/build/tests/bin/validate_arguments",
-			"args": [],
-			"stopAtEntry": true,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "build"
-		},
-		{
-			"name": "whatever",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/build/tests/bin/whatever",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",

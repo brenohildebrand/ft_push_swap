@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/01 15:27:11 by                   #+#    #+#              #
-#    Updated: 2024/03/01 15:27:11 by                  ###   ########.fr        #
+#    Created: 2024/03/01 18:45:02 by                   #+#    #+#              #
+#    Updated: 2024/03/01 18:45:02 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,19 +79,19 @@ DEPENDENCIES = \
 	validate_arguments.d
 
 TESTS = \
+	build/tests/bin/create_and_share_stacks \
 	build/tests/bin/push_swap \
-	build/tests/bin/validate_arguments \
-	build/tests/bin/whatever
+	build/tests/bin/validate_arguments
 
 TESTS_OBJECTS = \
+	build/tests/objects/create_and_share_stacks.o \
 	build/tests/objects/push_swap.o \
-	build/tests/objects/validate_arguments.o \
-	build/tests/objects/whatever.o
+	build/tests/objects/validate_arguments.o
 
 TESTS_DEPENDENCIES = \
+	build/tests/dependencies/create_and_share_stacks.d \
 	build/tests/dependencies/push_swap.d \
-	build/tests/dependencies/validate_arguments.d \
-	build/tests/dependencies/whatever.d
+	build/tests/dependencies/validate_arguments.d
 
 DEBUG_DIR = ./build/debug
 DEFAULT_DIR = ./build/default
@@ -313,11 +313,11 @@ $(DEBUG_DIR)/objects/f64_to_any.o: ./source/types/f64/f64_to_any.c
 $(DEBUG_DIR)/objects/framework_get.o: ./source/types/framework/framework_get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/framework_get.d -c ./source/types/framework/framework_get.c -o $(DEBUG_DIR)/objects/framework_get.o
 
-$(DEBUG_DIR)/objects/framework_get_map.o: ./source/types/framework/framework_get_map.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/framework_get_map.d -c ./source/types/framework/framework_get_map.c -o $(DEBUG_DIR)/objects/framework_get_map.o
+$(DEBUG_DIR)/objects/framework_setup.o: ./source/types/framework/framework_setup.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/framework_setup.d -c ./source/types/framework/framework_setup.c -o $(DEBUG_DIR)/objects/framework_setup.o
 
-$(DEBUG_DIR)/objects/framework_get_memtree.o: ./source/types/framework/framework_get_memtree.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/framework_get_memtree.d -c ./source/types/framework/framework_get_memtree.c -o $(DEBUG_DIR)/objects/framework_get_memtree.o
+$(DEBUG_DIR)/objects/framework_teardown.o: ./source/types/framework/framework_teardown.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/framework_teardown.d -c ./source/types/framework/framework_teardown.c -o $(DEBUG_DIR)/objects/framework_teardown.o
 
 $(DEBUG_DIR)/objects/i32.o: ./source/types/i32/i32.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/i32.d -c ./source/types/i32/i32.c -o $(DEBUG_DIR)/objects/i32.o
@@ -656,11 +656,11 @@ $(DEFAULT_DIR)/objects/f64_to_any.o: ./source/types/f64/f64_to_any.c
 $(DEFAULT_DIR)/objects/framework_get.o: ./source/types/framework/framework_get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/framework_get.d -c ./source/types/framework/framework_get.c -o $(DEFAULT_DIR)/objects/framework_get.o
 
-$(DEFAULT_DIR)/objects/framework_get_map.o: ./source/types/framework/framework_get_map.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/framework_get_map.d -c ./source/types/framework/framework_get_map.c -o $(DEFAULT_DIR)/objects/framework_get_map.o
+$(DEFAULT_DIR)/objects/framework_setup.o: ./source/types/framework/framework_setup.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/framework_setup.d -c ./source/types/framework/framework_setup.c -o $(DEFAULT_DIR)/objects/framework_setup.o
 
-$(DEFAULT_DIR)/objects/framework_get_memtree.o: ./source/types/framework/framework_get_memtree.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/framework_get_memtree.d -c ./source/types/framework/framework_get_memtree.c -o $(DEFAULT_DIR)/objects/framework_get_memtree.o
+$(DEFAULT_DIR)/objects/framework_teardown.o: ./source/types/framework/framework_teardown.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/framework_teardown.d -c ./source/types/framework/framework_teardown.c -o $(DEFAULT_DIR)/objects/framework_teardown.o
 
 $(DEFAULT_DIR)/objects/i32.o: ./source/types/i32/i32.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/i32.d -c ./source/types/i32/i32.c -o $(DEFAULT_DIR)/objects/i32.o
@@ -902,6 +902,10 @@ $(TESTS_DIR)/objects/type.o: ./tests/types/type.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/type.d -c ./tests/types/type.c -o $(TESTS_DIR)/objects/type.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/type.o $(DEFAULT) -o $(TESTS_DIR)/bin/type
 
+$(TESTS_DIR)/objects/create_and_share_stacks.o: ./tests/create_and_share_stacks.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/create_and_share_stacks.d -c ./tests/create_and_share_stacks.c -o $(TESTS_DIR)/objects/create_and_share_stacks.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/create_and_share_stacks.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/create_and_share_stacks
+
 $(TESTS_DIR)/objects/push_swap.o: ./tests/push_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/push_swap.d -c ./tests/push_swap.c -o $(TESTS_DIR)/objects/push_swap.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/push_swap.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/push_swap
@@ -909,9 +913,5 @@ $(TESTS_DIR)/objects/push_swap.o: ./tests/push_swap.c
 $(TESTS_DIR)/objects/validate_arguments.o: ./tests/validate_arguments.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/validate_arguments.d -c ./tests/validate_arguments.c -o $(TESTS_DIR)/objects/validate_arguments.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/validate_arguments.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/validate_arguments
-
-$(TESTS_DIR)/objects/whatever.o: ./tests/whatever.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/whatever.d -c ./tests/whatever.c -o $(TESTS_DIR)/objects/whatever.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/whatever.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/whatever
 
 

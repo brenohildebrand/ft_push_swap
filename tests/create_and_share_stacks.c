@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:29:05 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/01 15:33:31 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:43:41 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ t_i32	main(void)
 	assert(retrieve("beta")->type == list());
 	any_destroy(retrieve("alpha"));
 	any_destroy(retrieve("beta"));
-	return (0);	
+	map_destroy(framework_get()->map);
+	return (0);
 }
