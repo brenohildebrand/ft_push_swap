@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:19:57 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/29 10:51:09 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:05:23 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	validate_argv(t_i32 argc, t_i8 *argv[])
 	i = argc - 1;
 	while (i >= 1)
 	{
-		if (!cstring_is_i32(argv[i]))
+		if (!i8_sequence_is_i32(argv[i]))
 		{
 			display("Huh?! The argument '");
 			display(argv[i]);

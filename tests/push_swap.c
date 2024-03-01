@@ -5,21 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 18:08:23 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/02/29 17:51:31 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/03/01 11:11:17 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/03/01 11:54:16 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// -- Let the first stack be Alpha and the second one be Beta. 
+void	t1(void);
 
-t_i32	push_swap(t_i32 argc, t_i8 *argv[])
+t_i32	main(void)
 {
-	validate_arguments(argc, argv);
-	create_and_share_stacks();
-	fill_alpha_with_arguments(argc, argv);
-	// runif(argc - 1 <= 5, solve_for_less_than_five());
-	// runif(argc - 1 > 5, solve_for_more_than_five());
+	t1();
+	// assert(forkrun(t1) == 0);
 	return (0);
+}
+
+void	t1(void)
+{
+	t_i32	argc;
+	t_i8	*argv[4];
+
+	argc = 4;
+	argv[0] = "./push_swap";
+	argv[1] = "1";
+	argv[2] = "2";
+	argv[3] = "3";
+	push_swap(argc, argv);
 }
