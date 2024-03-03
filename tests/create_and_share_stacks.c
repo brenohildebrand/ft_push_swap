@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:29:05 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/01 18:43:41 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/03 13:31:32 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 t_i32	main(void)
 {
+	framework_setup();
 	create_and_share_stacks();
 	assert(retrieve("alpha")->type == list());
 	assert(retrieve("beta")->type == list());
-	any_destroy(retrieve("alpha"));
-	any_destroy(retrieve("beta"));
-	map_destroy(framework_get()->map);
+	framework_teardown();
 	return (0);
 }

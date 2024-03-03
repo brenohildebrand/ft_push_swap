@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/01 18:45:02 by                   #+#    #+#              #
-#    Updated: 2024/03/01 18:45:02 by                  ###   ########.fr        #
+#    Created: 2024/03/03 13:49:36 by                   #+#    #+#              #
+#    Updated: 2024/03/03 13:49:36 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -846,61 +846,25 @@ $(TESTS_DIR)/objects/deallocate.o: ./tests/functions/deallocate.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/deallocate.d -c ./tests/functions/deallocate.c -o $(TESTS_DIR)/objects/deallocate.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/deallocate.o $(DEFAULT) -o $(TESTS_DIR)/bin/deallocate
 
-$(TESTS_DIR)/objects/debug.o: ./tests/functions/debug.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/debug.d -c ./tests/functions/debug.c -o $(TESTS_DIR)/objects/debug.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/debug.o $(DEFAULT) -o $(TESTS_DIR)/bin/debug
-
-$(TESTS_DIR)/objects/delete.o: ./tests/functions/delete.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/delete.d -c ./tests/functions/delete.c -o $(TESTS_DIR)/objects/delete.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/delete.o $(DEFAULT) -o $(TESTS_DIR)/bin/delete
-
 $(TESTS_DIR)/objects/display.o: ./tests/functions/display.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/display.d -c ./tests/functions/display.c -o $(TESTS_DIR)/objects/display.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/display.o $(DEFAULT) -o $(TESTS_DIR)/bin/display
-
-$(TESTS_DIR)/objects/error.o: ./tests/functions/error.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/error.d -c ./tests/functions/error.c -o $(TESTS_DIR)/objects/error.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/error.o $(DEFAULT) -o $(TESTS_DIR)/bin/error
 
 $(TESTS_DIR)/objects/forkrun.o: ./tests/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/forkrun.d -c ./tests/functions/forkrun.c -o $(TESTS_DIR)/objects/forkrun.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/forkrun.o $(DEFAULT) -o $(TESTS_DIR)/bin/forkrun
 
-$(TESTS_DIR)/objects/new.o: ./tests/functions/new.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/new.d -c ./tests/functions/new.c -o $(TESTS_DIR)/objects/new.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/new.o $(DEFAULT) -o $(TESTS_DIR)/bin/new
+$(TESTS_DIR)/objects/share.o: ./tests/functions/share.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/share.d -c ./tests/functions/share.c -o $(TESTS_DIR)/objects/share.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/share.o $(DEFAULT) -o $(TESTS_DIR)/bin/share
 
-$(TESTS_DIR)/objects/repeat.o: ./tests/functions/repeat.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/repeat.d -c ./tests/functions/repeat.c -o $(TESTS_DIR)/objects/repeat.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/repeat.o $(DEFAULT) -o $(TESTS_DIR)/bin/repeat
-
-$(TESTS_DIR)/objects/warning.o: ./tests/functions/warning.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/warning.d -c ./tests/functions/warning.c -o $(TESTS_DIR)/objects/warning.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/warning.o $(DEFAULT) -o $(TESTS_DIR)/bin/warning
-
-$(TESTS_DIR)/objects/any.o: ./tests/types/any.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/any.d -c ./tests/types/any.c -o $(TESTS_DIR)/objects/any.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/any.o $(DEFAULT) -o $(TESTS_DIR)/bin/any
-
-$(TESTS_DIR)/objects/framework.o: ./tests/types/framework.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/framework.d -c ./tests/types/framework.c -o $(TESTS_DIR)/objects/framework.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/framework.o $(DEFAULT) -o $(TESTS_DIR)/bin/framework
+$(TESTS_DIR)/objects/list.o: ./tests/types/list.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list.d -c ./tests/types/list.c -o $(TESTS_DIR)/objects/list.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list.o $(DEFAULT) -o $(TESTS_DIR)/bin/list
 
 $(TESTS_DIR)/objects/map.o: ./tests/types/map.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map.d -c ./tests/types/map.c -o $(TESTS_DIR)/objects/map.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map.o $(DEFAULT) -o $(TESTS_DIR)/bin/map
-
-$(TESTS_DIR)/objects/memtree.o: ./tests/types/memtree.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/memtree.d -c ./tests/types/memtree.c -o $(TESTS_DIR)/objects/memtree.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/memtree.o $(DEFAULT) -o $(TESTS_DIR)/bin/memtree
-
-$(TESTS_DIR)/objects/string.o: ./tests/types/string.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/string.d -c ./tests/types/string.c -o $(TESTS_DIR)/objects/string.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/string.o $(DEFAULT) -o $(TESTS_DIR)/bin/string
-
-$(TESTS_DIR)/objects/type.o: ./tests/types/type.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/type.d -c ./tests/types/type.c -o $(TESTS_DIR)/objects/type.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/type.o $(DEFAULT) -o $(TESTS_DIR)/bin/type
 
 $(TESTS_DIR)/objects/create_and_share_stacks.o: ./tests/create_and_share_stacks.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/create_and_share_stacks.d -c ./tests/create_and_share_stacks.c -o $(TESTS_DIR)/objects/create_and_share_stacks.o
