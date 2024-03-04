@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/03 21:33:26 by                   #+#    #+#              #
-#    Updated: 2024/03/03 21:33:26 by                  ###   ########.fr        #
+#    Created: 2024/03/04 15:54:38 by                   #+#    #+#              #
+#    Updated: 2024/03/04 15:54:38 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ CPATHS = 	-include framework.h \
 	-iquote /home/bhildebr/github/ft_push_swap/source
 
 SOURCES = \
+	./source/check_if_it_is_already_sorted.c \
 	./source/create_and_share_stacks.c \
 	./source/fill_alpha_with_arguments.c \
 	./source/push_swap.c \
@@ -66,6 +67,7 @@ HEADERS = \
 	push_swap.h
 
 OBJECTS = \
+	check_if_it_is_already_sorted.o \
 	create_and_share_stacks.o \
 	fill_alpha_with_arguments.o \
 	push_swap.o \
@@ -73,6 +75,7 @@ OBJECTS = \
 	main.o
 
 DEPENDENCIES = \
+	check_if_it_is_already_sorted.d \
 	create_and_share_stacks.d \
 	fill_alpha_with_arguments.d \
 	push_swap.d \
@@ -80,16 +83,19 @@ DEPENDENCIES = \
 
 TESTS = \
 	build/tests/bin/create_and_share_stacks \
+	build/tests/bin/fill_alpha_with_arguments \
 	build/tests/bin/push_swap \
 	build/tests/bin/validate_arguments
 
 TESTS_OBJECTS = \
 	build/tests/objects/create_and_share_stacks.o \
+	build/tests/objects/fill_alpha_with_arguments.o \
 	build/tests/objects/push_swap.o \
 	build/tests/objects/validate_arguments.o
 
 TESTS_DEPENDENCIES = \
 	build/tests/dependencies/create_and_share_stacks.d \
+	build/tests/dependencies/fill_alpha_with_arguments.d \
 	build/tests/dependencies/push_swap.d \
 	build/tests/dependencies/validate_arguments.d
 
@@ -157,6 +163,9 @@ $(DEBUG_DIR)/objects/assert.o: ./source/functions/assert.c
 $(DEBUG_DIR)/objects/as_any.o: ./source/functions/as_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/as_any.d -c ./source/functions/as_any.c -o $(DEBUG_DIR)/objects/as_any.o
 
+$(DEBUG_DIR)/objects/call_if.o: ./source/functions/call_if.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/call_if.d -c ./source/functions/call_if.c -o $(DEBUG_DIR)/objects/call_if.o
+
 $(DEBUG_DIR)/objects/compare.o: ./source/functions/compare.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/compare.d -c ./source/functions/compare.c -o $(DEBUG_DIR)/objects/compare.o
 
@@ -202,6 +211,15 @@ $(DEBUG_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 $(DEBUG_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEBUG_DIR)/objects/init.o
 
+$(DEBUG_DIR)/objects/is_sorted.o: ./source/functions/is_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/is_sorted.d -c ./source/functions/is_sorted.c -o $(DEBUG_DIR)/objects/is_sorted.o
+
+$(DEBUG_DIR)/objects/loop_in_range.o: ./source/functions/loop_in_range.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/loop_in_range.d -c ./source/functions/loop_in_range.c -o $(DEBUG_DIR)/objects/loop_in_range.o
+
+$(DEBUG_DIR)/objects/loop_until.o: ./source/functions/loop_until.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/loop_until.d -c ./source/functions/loop_until.c -o $(DEBUG_DIR)/objects/loop_until.o
+
 $(DEBUG_DIR)/objects/new.o: ./source/functions/new.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/new.d -c ./source/functions/new.c -o $(DEBUG_DIR)/objects/new.o
 
@@ -213,9 +231,6 @@ $(DEBUG_DIR)/objects/push.o: ./source/functions/push.c
 
 $(DEBUG_DIR)/objects/quit.o: ./source/functions/quit.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/quit.d -c ./source/functions/quit.c -o $(DEBUG_DIR)/objects/quit.o
-
-$(DEBUG_DIR)/objects/range.o: ./source/functions/range.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/range.d -c ./source/functions/range.c -o $(DEBUG_DIR)/objects/range.o
 
 $(DEBUG_DIR)/objects/reduce.o: ./source/functions/reduce.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/reduce.d -c ./source/functions/reduce.c -o $(DEBUG_DIR)/objects/reduce.o
@@ -322,6 +337,9 @@ $(DEBUG_DIR)/objects/framework_teardown.o: ./source/types/framework/framework_te
 $(DEBUG_DIR)/objects/i32.o: ./source/types/i32/i32.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/i32.d -c ./source/types/i32/i32.c -o $(DEBUG_DIR)/objects/i32.o
 
+$(DEBUG_DIR)/objects/i32_compare.o: ./source/types/i32/i32_compare.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/i32_compare.d -c ./source/types/i32/i32_compare.c -o $(DEBUG_DIR)/objects/i32_compare.o
+
 $(DEBUG_DIR)/objects/i32_to_any.o: ./source/types/i32/i32_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/i32_to_any.d -c ./source/types/i32/i32_to_any.c -o $(DEBUG_DIR)/objects/i32_to_any.o
 
@@ -384,6 +402,9 @@ $(DEBUG_DIR)/objects/list_get.o: ./source/types/list/list_get.c
 
 $(DEBUG_DIR)/objects/list_get_length.o: ./source/types/list/list_get_length.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_get_length.d -c ./source/types/list/list_get_length.c -o $(DEBUG_DIR)/objects/list_get_length.o
+
+$(DEBUG_DIR)/objects/list_is_sorted.o: ./source/types/list/list_is_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_is_sorted.d -c ./source/types/list/list_is_sorted.c -o $(DEBUG_DIR)/objects/list_is_sorted.o
 
 $(DEBUG_DIR)/objects/list_pop.o: ./source/types/list/list_pop.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_pop.d -c ./source/types/list/list_pop.c -o $(DEBUG_DIR)/objects/list_pop.o
@@ -475,6 +496,9 @@ $(DEBUG_DIR)/objects/u8.o: ./source/types/u8/u8.c
 $(DEBUG_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEBUG_DIR)/objects/u8_to_any.o
 
+$(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o: ./source/check_if_it_is_already_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/check_if_it_is_already_sorted.c -o $(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o
+
 $(DEBUG_DIR)/objects/create_and_share_stacks.o: ./source/create_and_share_stacks.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/create_and_share_stacks.d -c ./source/create_and_share_stacks.c -o $(DEBUG_DIR)/objects/create_and_share_stacks.o
 
@@ -499,6 +523,9 @@ $(DEFAULT_DIR)/objects/assert.o: ./source/functions/assert.c
 
 $(DEFAULT_DIR)/objects/as_any.o: ./source/functions/as_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/as_any.d -c ./source/functions/as_any.c -o $(DEFAULT_DIR)/objects/as_any.o
+
+$(DEFAULT_DIR)/objects/call_if.o: ./source/functions/call_if.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/call_if.d -c ./source/functions/call_if.c -o $(DEFAULT_DIR)/objects/call_if.o
 
 $(DEFAULT_DIR)/objects/compare.o: ./source/functions/compare.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/compare.d -c ./source/functions/compare.c -o $(DEFAULT_DIR)/objects/compare.o
@@ -545,6 +572,15 @@ $(DEFAULT_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 $(DEFAULT_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEFAULT_DIR)/objects/init.o
 
+$(DEFAULT_DIR)/objects/is_sorted.o: ./source/functions/is_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/is_sorted.d -c ./source/functions/is_sorted.c -o $(DEFAULT_DIR)/objects/is_sorted.o
+
+$(DEFAULT_DIR)/objects/loop_in_range.o: ./source/functions/loop_in_range.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/loop_in_range.d -c ./source/functions/loop_in_range.c -o $(DEFAULT_DIR)/objects/loop_in_range.o
+
+$(DEFAULT_DIR)/objects/loop_until.o: ./source/functions/loop_until.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/loop_until.d -c ./source/functions/loop_until.c -o $(DEFAULT_DIR)/objects/loop_until.o
+
 $(DEFAULT_DIR)/objects/new.o: ./source/functions/new.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/new.d -c ./source/functions/new.c -o $(DEFAULT_DIR)/objects/new.o
 
@@ -556,9 +592,6 @@ $(DEFAULT_DIR)/objects/push.o: ./source/functions/push.c
 
 $(DEFAULT_DIR)/objects/quit.o: ./source/functions/quit.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/quit.d -c ./source/functions/quit.c -o $(DEFAULT_DIR)/objects/quit.o
-
-$(DEFAULT_DIR)/objects/range.o: ./source/functions/range.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/range.d -c ./source/functions/range.c -o $(DEFAULT_DIR)/objects/range.o
 
 $(DEFAULT_DIR)/objects/reduce.o: ./source/functions/reduce.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/reduce.d -c ./source/functions/reduce.c -o $(DEFAULT_DIR)/objects/reduce.o
@@ -665,6 +698,9 @@ $(DEFAULT_DIR)/objects/framework_teardown.o: ./source/types/framework/framework_
 $(DEFAULT_DIR)/objects/i32.o: ./source/types/i32/i32.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/i32.d -c ./source/types/i32/i32.c -o $(DEFAULT_DIR)/objects/i32.o
 
+$(DEFAULT_DIR)/objects/i32_compare.o: ./source/types/i32/i32_compare.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/i32_compare.d -c ./source/types/i32/i32_compare.c -o $(DEFAULT_DIR)/objects/i32_compare.o
+
 $(DEFAULT_DIR)/objects/i32_to_any.o: ./source/types/i32/i32_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/i32_to_any.d -c ./source/types/i32/i32_to_any.c -o $(DEFAULT_DIR)/objects/i32_to_any.o
 
@@ -727,6 +763,9 @@ $(DEFAULT_DIR)/objects/list_get.o: ./source/types/list/list_get.c
 
 $(DEFAULT_DIR)/objects/list_get_length.o: ./source/types/list/list_get_length.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_get_length.d -c ./source/types/list/list_get_length.c -o $(DEFAULT_DIR)/objects/list_get_length.o
+
+$(DEFAULT_DIR)/objects/list_is_sorted.o: ./source/types/list/list_is_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_is_sorted.d -c ./source/types/list/list_is_sorted.c -o $(DEFAULT_DIR)/objects/list_is_sorted.o
 
 $(DEFAULT_DIR)/objects/list_pop.o: ./source/types/list/list_pop.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_pop.d -c ./source/types/list/list_pop.c -o $(DEFAULT_DIR)/objects/list_pop.o
@@ -818,6 +857,9 @@ $(DEFAULT_DIR)/objects/u8.o: ./source/types/u8/u8.c
 $(DEFAULT_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEFAULT_DIR)/objects/u8_to_any.o
 
+$(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o: ./source/check_if_it_is_already_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/check_if_it_is_already_sorted.c -o $(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o
+
 $(DEFAULT_DIR)/objects/create_and_share_stacks.o: ./source/create_and_share_stacks.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/create_and_share_stacks.d -c ./source/create_and_share_stacks.c -o $(DEFAULT_DIR)/objects/create_and_share_stacks.o
 
@@ -866,6 +908,10 @@ $(TESTS_DIR)/objects/list_destroy.o: ./tests/types/list/list_destroy.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_destroy.d -c ./tests/types/list/list_destroy.c -o $(TESTS_DIR)/objects/list_destroy.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_destroy.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_destroy
 
+$(TESTS_DIR)/objects/list_is_sorted.o: ./tests/types/list/list_is_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_is_sorted.d -c ./tests/types/list/list_is_sorted.c -o $(TESTS_DIR)/objects/list_is_sorted.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_is_sorted.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_is_sorted
+
 $(TESTS_DIR)/objects/list_push.o: ./tests/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_push.d -c ./tests/types/list/list_push.c -o $(TESTS_DIR)/objects/list_push.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_push.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_push
@@ -881,6 +927,10 @@ $(TESTS_DIR)/objects/map_destroy.o: ./tests/types/map/map_destroy.c
 $(TESTS_DIR)/objects/create_and_share_stacks.o: ./tests/create_and_share_stacks.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/create_and_share_stacks.d -c ./tests/create_and_share_stacks.c -o $(TESTS_DIR)/objects/create_and_share_stacks.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/create_and_share_stacks.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/create_and_share_stacks
+
+$(TESTS_DIR)/objects/fill_alpha_with_arguments.o: ./tests/fill_alpha_with_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/fill_alpha_with_arguments.d -c ./tests/fill_alpha_with_arguments.c -o $(TESTS_DIR)/objects/fill_alpha_with_arguments.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/fill_alpha_with_arguments.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/fill_alpha_with_arguments
 
 $(TESTS_DIR)/objects/push_swap.o: ./tests/push_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/push_swap.d -c ./tests/push_swap.c -o $(TESTS_DIR)/objects/push_swap.o
