@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/03 13:49:36 by                   #+#    #+#              #
-#    Updated: 2024/03/03 13:49:36 by                  ###   ########.fr        #
+#    Created: 2024/03/03 21:33:26 by                   #+#    #+#              #
+#    Updated: 2024/03/03 21:33:26 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -858,13 +858,25 @@ $(TESTS_DIR)/objects/share.o: ./tests/functions/share.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/share.d -c ./tests/functions/share.c -o $(TESTS_DIR)/objects/share.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/share.o $(DEFAULT) -o $(TESTS_DIR)/bin/share
 
-$(TESTS_DIR)/objects/list.o: ./tests/types/list.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list.d -c ./tests/types/list.c -o $(TESTS_DIR)/objects/list.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list.o $(DEFAULT) -o $(TESTS_DIR)/bin/list
+$(TESTS_DIR)/objects/list_create.o: ./tests/types/list/list_create.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_create.d -c ./tests/types/list/list_create.c -o $(TESTS_DIR)/objects/list_create.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_create.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_create
 
-$(TESTS_DIR)/objects/map.o: ./tests/types/map.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map.d -c ./tests/types/map.c -o $(TESTS_DIR)/objects/map.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map.o $(DEFAULT) -o $(TESTS_DIR)/bin/map
+$(TESTS_DIR)/objects/list_destroy.o: ./tests/types/list/list_destroy.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_destroy.d -c ./tests/types/list/list_destroy.c -o $(TESTS_DIR)/objects/list_destroy.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_destroy.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_destroy
+
+$(TESTS_DIR)/objects/list_push.o: ./tests/types/list/list_push.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_push.d -c ./tests/types/list/list_push.c -o $(TESTS_DIR)/objects/list_push.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_push.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_push
+
+$(TESTS_DIR)/objects/map_create.o: ./tests/types/map/map_create.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_create.d -c ./tests/types/map/map_create.c -o $(TESTS_DIR)/objects/map_create.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_create.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_create
+
+$(TESTS_DIR)/objects/map_destroy.o: ./tests/types/map/map_destroy.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_destroy.d -c ./tests/types/map/map_destroy.c -o $(TESTS_DIR)/objects/map_destroy.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_destroy.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_destroy
 
 $(TESTS_DIR)/objects/create_and_share_stacks.o: ./tests/create_and_share_stacks.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/create_and_share_stacks.d -c ./tests/create_and_share_stacks.c -o $(TESTS_DIR)/objects/create_and_share_stacks.o

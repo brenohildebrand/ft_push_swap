@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:11:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/01 16:45:32 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/03 21:08:42 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	t1(void);
 
 t_i32	main(void)
 {
-	t1();
-	// assert(forkrun(t1) == 0);
+	assert(forkrun(t1) == 0);
 	return (0);
 }
 
