@@ -14,4 +14,7 @@ build/tests/objects/fill_alpha_with_arguments.o: \
  /home/bhildebr/github/ft_framework/source/types/map/map.h \
  /home/bhildebr/github/ft_framework/source/types/memtree/memtree.h \
  /home/bhildebr/github/ft_framework/source/types/type/type.h \
- /home/bhildebr/github/ft_push_swap/source/push_swap.h
+ /home/bhildebr/github/ft_push_swap/source/push_swap/push_swap.h \
+ /home/bhildebr/github/ft_push_swap/source/small_sort/small_sort.h \
+ /home/bhildebr/github/ft_push_swap/source/operations/operations.h \
+ /home/bhildebr/github/ft_push_swap/source/big_sort/radix/radix.h

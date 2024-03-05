@@ -6,11 +6,13 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:36:25 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/04 16:36:47 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/05 07:27:48 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "small_sort.h"
+
 void	solve_for_two(void)
 {
-	return ;
+	sa();
 }

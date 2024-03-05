@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/04 15:54:38 by                   #+#    #+#              #
-#    Updated: 2024/03/04 15:54:38 by                  ###   ########.fr        #
+#    Created: 2024/03/05 13:47:01 by                   #+#    #+#              #
+#    Updated: 2024/03/05 13:47:01 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,36 +50,102 @@ CPATHS = 	-include framework.h \
 	-iquote /home/bhildebr/github/ft_framework/source/types/list \
 	-iquote /home/bhildebr/github/ft_framework/source/types/map \
 	-iquote /home/bhildebr/github/ft_framework/source/types/memtree \
+	-iquote /home/bhildebr/github/ft_framework/source/types/string \
 	-iquote /home/bhildebr/github/ft_framework/source/types/type \
 	-iquote /home/bhildebr/github/ft_framework/source/types/u32 \
 	-iquote /home/bhildebr/github/ft_framework/source/types/u64 \
 	-iquote /home/bhildebr/github/ft_framework/source/types/u8 \
-	-iquote /home/bhildebr/github/ft_push_swap/source
+	-iquote /home/bhildebr/github/ft_push_swap/source \
+	-iquote /home/bhildebr/github/ft_push_swap/source/big_sort \
+	-iquote /home/bhildebr/github/ft_push_swap/source/big_sort/radix \
+	-iquote /home/bhildebr/github/ft_push_swap/source/operations \
+	-iquote /home/bhildebr/github/ft_push_swap/source/push_swap \
+	-iquote /home/bhildebr/github/ft_push_swap/source/small_sort
 
 SOURCES = \
-	./source/check_if_it_is_already_sorted.c \
-	./source/create_and_share_stacks.c \
-	./source/fill_alpha_with_arguments.c \
-	./source/push_swap.c \
-	./source/validate_arguments.c
+	./source/big_sort/radix/radix.c \
+	./source/operations/pa.c \
+	./source/operations/pb.c \
+	./source/operations/ra.c \
+	./source/operations/rb.c \
+	./source/operations/rr.c \
+	./source/operations/rra.c \
+	./source/operations/rrb.c \
+	./source/operations/rrr.c \
+	./source/operations/sa.c \
+	./source/operations/sb.c \
+	./source/operations/ss.c \
+	./source/push_swap/check_if_it_is_already_sorted.c \
+	./source/push_swap/create_and_share_stacks.c \
+	./source/push_swap/fill_alpha_with_arguments.c \
+	./source/push_swap/push_swap.c \
+	./source/push_swap/solve_for_less_than_six.c \
+	./source/push_swap/solve_for_more_than_five.c \
+	./source/push_swap/validate_arguments.c \
+	./source/small_sort/put_smallest_on_top.c \
+	./source/small_sort/solve_for_five.c \
+	./source/small_sort/solve_for_four.c \
+	./source/small_sort/solve_for_three.c \
+	./source/small_sort/solve_for_two.c
 
 HEADERS = \
-	push_swap.h
+	radix.h \
+	operations.h \
+	push_swap.h \
+	small_sort.h
 
 OBJECTS = \
+	radix.o \
+	pa.o \
+	pb.o \
+	ra.o \
+	rb.o \
+	rr.o \
+	rra.o \
+	rrb.o \
+	rrr.o \
+	sa.o \
+	sb.o \
+	ss.o \
 	check_if_it_is_already_sorted.o \
 	create_and_share_stacks.o \
 	fill_alpha_with_arguments.o \
 	push_swap.o \
+	solve_for_less_than_six.o \
+	solve_for_more_than_five.o \
 	validate_arguments.o \
+	put_smallest_on_top.o \
+	solve_for_five.o \
+	solve_for_four.o \
+	solve_for_three.o \
+	solve_for_two.o \
 	main.o
 
 DEPENDENCIES = \
+	radix.d \
+	pa.d \
+	pb.d \
+	ra.d \
+	rb.d \
+	rr.d \
+	rra.d \
+	rrb.d \
+	rrr.d \
+	sa.d \
+	sb.d \
+	ss.d \
 	check_if_it_is_already_sorted.d \
 	create_and_share_stacks.d \
 	fill_alpha_with_arguments.d \
 	push_swap.d \
-	validate_arguments.d
+	solve_for_less_than_six.d \
+	solve_for_more_than_five.d \
+	validate_arguments.d \
+	put_smallest_on_top.d \
+	solve_for_five.d \
+	solve_for_four.d \
+	solve_for_three.d \
+	solve_for_two.d
 
 TESTS = \
 	build/tests/bin/create_and_share_stacks \
@@ -208,6 +274,12 @@ $(DEBUG_DIR)/objects/foreach.o: ./source/functions/foreach.c
 $(DEBUG_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEBUG_DIR)/objects/forkrun.o
 
+$(DEBUG_DIR)/objects/get.o: ./source/functions/get.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/get.d -c ./source/functions/get.c -o $(DEBUG_DIR)/objects/get.o
+
+$(DEBUG_DIR)/objects/get_length.o: ./source/functions/get_length.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/get_length.d -c ./source/functions/get_length.c -o $(DEBUG_DIR)/objects/get_length.o
+
 $(DEBUG_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEBUG_DIR)/objects/init.o
 
@@ -222,6 +294,9 @@ $(DEBUG_DIR)/objects/loop_until.o: ./source/functions/loop_until.c
 
 $(DEBUG_DIR)/objects/new.o: ./source/functions/new.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/new.d -c ./source/functions/new.c -o $(DEBUG_DIR)/objects/new.o
+
+$(DEBUG_DIR)/objects/pop.o: ./source/functions/pop.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/pop.d -c ./source/functions/pop.c -o $(DEBUG_DIR)/objects/pop.o
 
 $(DEBUG_DIR)/objects/print.o: ./source/functions/print.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/print.d -c ./source/functions/print.c -o $(DEBUG_DIR)/objects/print.o
@@ -241,11 +316,20 @@ $(DEBUG_DIR)/objects/repeat.o: ./source/functions/repeat.c
 $(DEBUG_DIR)/objects/retrieve.o: ./source/functions/retrieve.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/retrieve.d -c ./source/functions/retrieve.c -o $(DEBUG_DIR)/objects/retrieve.o
 
+$(DEBUG_DIR)/objects/reverse_rotate.o: ./source/functions/reverse_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/reverse_rotate.d -c ./source/functions/reverse_rotate.c -o $(DEBUG_DIR)/objects/reverse_rotate.o
+
+$(DEBUG_DIR)/objects/rotate.o: ./source/functions/rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rotate.d -c ./source/functions/rotate.c -o $(DEBUG_DIR)/objects/rotate.o
+
 $(DEBUG_DIR)/objects/share.o: ./source/functions/share.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEBUG_DIR)/objects/share.o
 
 $(DEBUG_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEBUG_DIR)/objects/slice.o
+
+$(DEBUG_DIR)/objects/swap.o: ./source/functions/swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/swap.d -c ./source/functions/swap.c -o $(DEBUG_DIR)/objects/swap.o
 
 $(DEBUG_DIR)/objects/to_any.o: ./source/functions/to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/to_any.d -c ./source/functions/to_any.c -o $(DEBUG_DIR)/objects/to_any.o
@@ -415,11 +499,20 @@ $(DEBUG_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 $(DEBUG_DIR)/objects/list_reverse.o: ./source/types/list/list_reverse.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_reverse.d -c ./source/types/list/list_reverse.c -o $(DEBUG_DIR)/objects/list_reverse.o
 
+$(DEBUG_DIR)/objects/list_reverse_rotate.o: ./source/types/list/list_reverse_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_reverse_rotate.d -c ./source/types/list/list_reverse_rotate.c -o $(DEBUG_DIR)/objects/list_reverse_rotate.o
+
+$(DEBUG_DIR)/objects/list_rotate.o: ./source/types/list/list_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_rotate.d -c ./source/types/list/list_rotate.c -o $(DEBUG_DIR)/objects/list_rotate.o
+
 $(DEBUG_DIR)/objects/list_set.o: ./source/types/list/list_set.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_set.d -c ./source/types/list/list_set.c -o $(DEBUG_DIR)/objects/list_set.o
 
 $(DEBUG_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_shift.d -c ./source/types/list/list_shift.c -o $(DEBUG_DIR)/objects/list_shift.o
+
+$(DEBUG_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEBUG_DIR)/objects/list_swap.o
 
 $(DEBUG_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_unshift.d -c ./source/types/list/list_unshift.c -o $(DEBUG_DIR)/objects/list_unshift.o
@@ -496,23 +589,80 @@ $(DEBUG_DIR)/objects/u8.o: ./source/types/u8/u8.c
 $(DEBUG_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEBUG_DIR)/objects/u8_to_any.o
 
-$(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o: ./source/check_if_it_is_already_sorted.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/check_if_it_is_already_sorted.c -o $(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o
+$(DEBUG_DIR)/objects/radix.o: ./source/big_sort/radix/radix.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/radix.d -c ./source/big_sort/radix/radix.c -o $(DEBUG_DIR)/objects/radix.o
 
-$(DEBUG_DIR)/objects/create_and_share_stacks.o: ./source/create_and_share_stacks.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/create_and_share_stacks.d -c ./source/create_and_share_stacks.c -o $(DEBUG_DIR)/objects/create_and_share_stacks.o
+$(DEBUG_DIR)/objects/pa.o: ./source/operations/pa.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/pa.d -c ./source/operations/pa.c -o $(DEBUG_DIR)/objects/pa.o
 
-$(DEBUG_DIR)/objects/fill_alpha_with_arguments.o: ./source/fill_alpha_with_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/fill_alpha_with_arguments.d -c ./source/fill_alpha_with_arguments.c -o $(DEBUG_DIR)/objects/fill_alpha_with_arguments.o
+$(DEBUG_DIR)/objects/pb.o: ./source/operations/pb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/pb.d -c ./source/operations/pb.c -o $(DEBUG_DIR)/objects/pb.o
 
-$(DEBUG_DIR)/objects/push_swap.o: ./source/push_swap.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/push_swap.d -c ./source/push_swap.c -o $(DEBUG_DIR)/objects/push_swap.o
+$(DEBUG_DIR)/objects/ra.o: ./source/operations/ra.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/ra.d -c ./source/operations/ra.c -o $(DEBUG_DIR)/objects/ra.o
 
-$(DEBUG_DIR)/objects/validate_arguments.o: ./source/validate_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/validate_arguments.d -c ./source/validate_arguments.c -o $(DEBUG_DIR)/objects/validate_arguments.o
+$(DEBUG_DIR)/objects/rb.o: ./source/operations/rb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rb.d -c ./source/operations/rb.c -o $(DEBUG_DIR)/objects/rb.o
 
-$(DEBUG_DIR)/objects/main.o: ./source/push_swap.c
-	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap.c -o $(DEBUG_DIR)/objects/main.o
+$(DEBUG_DIR)/objects/rr.o: ./source/operations/rr.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rr.d -c ./source/operations/rr.c -o $(DEBUG_DIR)/objects/rr.o
+
+$(DEBUG_DIR)/objects/rra.o: ./source/operations/rra.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rra.d -c ./source/operations/rra.c -o $(DEBUG_DIR)/objects/rra.o
+
+$(DEBUG_DIR)/objects/rrb.o: ./source/operations/rrb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rrb.d -c ./source/operations/rrb.c -o $(DEBUG_DIR)/objects/rrb.o
+
+$(DEBUG_DIR)/objects/rrr.o: ./source/operations/rrr.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rrr.d -c ./source/operations/rrr.c -o $(DEBUG_DIR)/objects/rrr.o
+
+$(DEBUG_DIR)/objects/sa.o: ./source/operations/sa.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/sa.d -c ./source/operations/sa.c -o $(DEBUG_DIR)/objects/sa.o
+
+$(DEBUG_DIR)/objects/sb.o: ./source/operations/sb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/sb.d -c ./source/operations/sb.c -o $(DEBUG_DIR)/objects/sb.o
+
+$(DEBUG_DIR)/objects/ss.o: ./source/operations/ss.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/ss.d -c ./source/operations/ss.c -o $(DEBUG_DIR)/objects/ss.o
+
+$(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o: ./source/push_swap/check_if_it_is_already_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/push_swap/check_if_it_is_already_sorted.c -o $(DEBUG_DIR)/objects/check_if_it_is_already_sorted.o
+
+$(DEBUG_DIR)/objects/create_and_share_stacks.o: ./source/push_swap/create_and_share_stacks.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/create_and_share_stacks.d -c ./source/push_swap/create_and_share_stacks.c -o $(DEBUG_DIR)/objects/create_and_share_stacks.o
+
+$(DEBUG_DIR)/objects/fill_alpha_with_arguments.o: ./source/push_swap/fill_alpha_with_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/fill_alpha_with_arguments.d -c ./source/push_swap/fill_alpha_with_arguments.c -o $(DEBUG_DIR)/objects/fill_alpha_with_arguments.o
+
+$(DEBUG_DIR)/objects/push_swap.o: ./source/push_swap/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/push_swap.d -c ./source/push_swap/push_swap.c -o $(DEBUG_DIR)/objects/push_swap.o
+
+$(DEBUG_DIR)/objects/solve_for_less_than_six.o: ./source/push_swap/solve_for_less_than_six.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_less_than_six.d -c ./source/push_swap/solve_for_less_than_six.c -o $(DEBUG_DIR)/objects/solve_for_less_than_six.o
+
+$(DEBUG_DIR)/objects/solve_for_more_than_five.o: ./source/push_swap/solve_for_more_than_five.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_more_than_five.d -c ./source/push_swap/solve_for_more_than_five.c -o $(DEBUG_DIR)/objects/solve_for_more_than_five.o
+
+$(DEBUG_DIR)/objects/validate_arguments.o: ./source/push_swap/validate_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/validate_arguments.d -c ./source/push_swap/validate_arguments.c -o $(DEBUG_DIR)/objects/validate_arguments.o
+
+$(DEBUG_DIR)/objects/put_smallest_on_top.o: ./source/small_sort/put_smallest_on_top.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/put_smallest_on_top.d -c ./source/small_sort/put_smallest_on_top.c -o $(DEBUG_DIR)/objects/put_smallest_on_top.o
+
+$(DEBUG_DIR)/objects/solve_for_five.o: ./source/small_sort/solve_for_five.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_five.d -c ./source/small_sort/solve_for_five.c -o $(DEBUG_DIR)/objects/solve_for_five.o
+
+$(DEBUG_DIR)/objects/solve_for_four.o: ./source/small_sort/solve_for_four.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_four.d -c ./source/small_sort/solve_for_four.c -o $(DEBUG_DIR)/objects/solve_for_four.o
+
+$(DEBUG_DIR)/objects/solve_for_three.o: ./source/small_sort/solve_for_three.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_three.d -c ./source/small_sort/solve_for_three.c -o $(DEBUG_DIR)/objects/solve_for_three.o
+
+$(DEBUG_DIR)/objects/solve_for_two.o: ./source/small_sort/solve_for_two.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/solve_for_two.d -c ./source/small_sort/solve_for_two.c -o $(DEBUG_DIR)/objects/solve_for_two.o
+
+$(DEBUG_DIR)/objects/main.o: ./source/push_swap/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap/push_swap.c -o $(DEBUG_DIR)/objects/main.o
 
 
 $(DEFAULT_DIR)/objects/allocate.o: ./source/functions/allocate.c
@@ -569,6 +719,12 @@ $(DEFAULT_DIR)/objects/foreach.o: ./source/functions/foreach.c
 $(DEFAULT_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEFAULT_DIR)/objects/forkrun.o
 
+$(DEFAULT_DIR)/objects/get.o: ./source/functions/get.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/get.d -c ./source/functions/get.c -o $(DEFAULT_DIR)/objects/get.o
+
+$(DEFAULT_DIR)/objects/get_length.o: ./source/functions/get_length.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/get_length.d -c ./source/functions/get_length.c -o $(DEFAULT_DIR)/objects/get_length.o
+
 $(DEFAULT_DIR)/objects/init.o: ./source/functions/init.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/init.d -c ./source/functions/init.c -o $(DEFAULT_DIR)/objects/init.o
 
@@ -583,6 +739,9 @@ $(DEFAULT_DIR)/objects/loop_until.o: ./source/functions/loop_until.c
 
 $(DEFAULT_DIR)/objects/new.o: ./source/functions/new.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/new.d -c ./source/functions/new.c -o $(DEFAULT_DIR)/objects/new.o
+
+$(DEFAULT_DIR)/objects/pop.o: ./source/functions/pop.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/pop.d -c ./source/functions/pop.c -o $(DEFAULT_DIR)/objects/pop.o
 
 $(DEFAULT_DIR)/objects/print.o: ./source/functions/print.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/print.d -c ./source/functions/print.c -o $(DEFAULT_DIR)/objects/print.o
@@ -602,11 +761,20 @@ $(DEFAULT_DIR)/objects/repeat.o: ./source/functions/repeat.c
 $(DEFAULT_DIR)/objects/retrieve.o: ./source/functions/retrieve.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/retrieve.d -c ./source/functions/retrieve.c -o $(DEFAULT_DIR)/objects/retrieve.o
 
+$(DEFAULT_DIR)/objects/reverse_rotate.o: ./source/functions/reverse_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/reverse_rotate.d -c ./source/functions/reverse_rotate.c -o $(DEFAULT_DIR)/objects/reverse_rotate.o
+
+$(DEFAULT_DIR)/objects/rotate.o: ./source/functions/rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rotate.d -c ./source/functions/rotate.c -o $(DEFAULT_DIR)/objects/rotate.o
+
 $(DEFAULT_DIR)/objects/share.o: ./source/functions/share.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEFAULT_DIR)/objects/share.o
 
 $(DEFAULT_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEFAULT_DIR)/objects/slice.o
+
+$(DEFAULT_DIR)/objects/swap.o: ./source/functions/swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/swap.d -c ./source/functions/swap.c -o $(DEFAULT_DIR)/objects/swap.o
 
 $(DEFAULT_DIR)/objects/to_any.o: ./source/functions/to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/to_any.d -c ./source/functions/to_any.c -o $(DEFAULT_DIR)/objects/to_any.o
@@ -776,11 +944,20 @@ $(DEFAULT_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 $(DEFAULT_DIR)/objects/list_reverse.o: ./source/types/list/list_reverse.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_reverse.d -c ./source/types/list/list_reverse.c -o $(DEFAULT_DIR)/objects/list_reverse.o
 
+$(DEFAULT_DIR)/objects/list_reverse_rotate.o: ./source/types/list/list_reverse_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_reverse_rotate.d -c ./source/types/list/list_reverse_rotate.c -o $(DEFAULT_DIR)/objects/list_reverse_rotate.o
+
+$(DEFAULT_DIR)/objects/list_rotate.o: ./source/types/list/list_rotate.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_rotate.d -c ./source/types/list/list_rotate.c -o $(DEFAULT_DIR)/objects/list_rotate.o
+
 $(DEFAULT_DIR)/objects/list_set.o: ./source/types/list/list_set.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_set.d -c ./source/types/list/list_set.c -o $(DEFAULT_DIR)/objects/list_set.o
 
 $(DEFAULT_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_shift.d -c ./source/types/list/list_shift.c -o $(DEFAULT_DIR)/objects/list_shift.o
+
+$(DEFAULT_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEFAULT_DIR)/objects/list_swap.o
 
 $(DEFAULT_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_unshift.d -c ./source/types/list/list_unshift.c -o $(DEFAULT_DIR)/objects/list_unshift.o
@@ -857,23 +1034,80 @@ $(DEFAULT_DIR)/objects/u8.o: ./source/types/u8/u8.c
 $(DEFAULT_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEFAULT_DIR)/objects/u8_to_any.o
 
-$(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o: ./source/check_if_it_is_already_sorted.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/check_if_it_is_already_sorted.c -o $(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o
+$(DEFAULT_DIR)/objects/radix.o: ./source/big_sort/radix/radix.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/radix.d -c ./source/big_sort/radix/radix.c -o $(DEFAULT_DIR)/objects/radix.o
 
-$(DEFAULT_DIR)/objects/create_and_share_stacks.o: ./source/create_and_share_stacks.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/create_and_share_stacks.d -c ./source/create_and_share_stacks.c -o $(DEFAULT_DIR)/objects/create_and_share_stacks.o
+$(DEFAULT_DIR)/objects/pa.o: ./source/operations/pa.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/pa.d -c ./source/operations/pa.c -o $(DEFAULT_DIR)/objects/pa.o
 
-$(DEFAULT_DIR)/objects/fill_alpha_with_arguments.o: ./source/fill_alpha_with_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/fill_alpha_with_arguments.d -c ./source/fill_alpha_with_arguments.c -o $(DEFAULT_DIR)/objects/fill_alpha_with_arguments.o
+$(DEFAULT_DIR)/objects/pb.o: ./source/operations/pb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/pb.d -c ./source/operations/pb.c -o $(DEFAULT_DIR)/objects/pb.o
 
-$(DEFAULT_DIR)/objects/push_swap.o: ./source/push_swap.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/push_swap.d -c ./source/push_swap.c -o $(DEFAULT_DIR)/objects/push_swap.o
+$(DEFAULT_DIR)/objects/ra.o: ./source/operations/ra.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/ra.d -c ./source/operations/ra.c -o $(DEFAULT_DIR)/objects/ra.o
 
-$(DEFAULT_DIR)/objects/validate_arguments.o: ./source/validate_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/validate_arguments.d -c ./source/validate_arguments.c -o $(DEFAULT_DIR)/objects/validate_arguments.o
+$(DEFAULT_DIR)/objects/rb.o: ./source/operations/rb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rb.d -c ./source/operations/rb.c -o $(DEFAULT_DIR)/objects/rb.o
 
-$(DEFAULT_DIR)/objects/main.o: ./source/push_swap.c
-	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap.c -o $(DEFAULT_DIR)/objects/main.o
+$(DEFAULT_DIR)/objects/rr.o: ./source/operations/rr.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rr.d -c ./source/operations/rr.c -o $(DEFAULT_DIR)/objects/rr.o
+
+$(DEFAULT_DIR)/objects/rra.o: ./source/operations/rra.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rra.d -c ./source/operations/rra.c -o $(DEFAULT_DIR)/objects/rra.o
+
+$(DEFAULT_DIR)/objects/rrb.o: ./source/operations/rrb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rrb.d -c ./source/operations/rrb.c -o $(DEFAULT_DIR)/objects/rrb.o
+
+$(DEFAULT_DIR)/objects/rrr.o: ./source/operations/rrr.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rrr.d -c ./source/operations/rrr.c -o $(DEFAULT_DIR)/objects/rrr.o
+
+$(DEFAULT_DIR)/objects/sa.o: ./source/operations/sa.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/sa.d -c ./source/operations/sa.c -o $(DEFAULT_DIR)/objects/sa.o
+
+$(DEFAULT_DIR)/objects/sb.o: ./source/operations/sb.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/sb.d -c ./source/operations/sb.c -o $(DEFAULT_DIR)/objects/sb.o
+
+$(DEFAULT_DIR)/objects/ss.o: ./source/operations/ss.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/ss.d -c ./source/operations/ss.c -o $(DEFAULT_DIR)/objects/ss.o
+
+$(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o: ./source/push_swap/check_if_it_is_already_sorted.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/check_if_it_is_already_sorted.d -c ./source/push_swap/check_if_it_is_already_sorted.c -o $(DEFAULT_DIR)/objects/check_if_it_is_already_sorted.o
+
+$(DEFAULT_DIR)/objects/create_and_share_stacks.o: ./source/push_swap/create_and_share_stacks.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/create_and_share_stacks.d -c ./source/push_swap/create_and_share_stacks.c -o $(DEFAULT_DIR)/objects/create_and_share_stacks.o
+
+$(DEFAULT_DIR)/objects/fill_alpha_with_arguments.o: ./source/push_swap/fill_alpha_with_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/fill_alpha_with_arguments.d -c ./source/push_swap/fill_alpha_with_arguments.c -o $(DEFAULT_DIR)/objects/fill_alpha_with_arguments.o
+
+$(DEFAULT_DIR)/objects/push_swap.o: ./source/push_swap/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/push_swap.d -c ./source/push_swap/push_swap.c -o $(DEFAULT_DIR)/objects/push_swap.o
+
+$(DEFAULT_DIR)/objects/solve_for_less_than_six.o: ./source/push_swap/solve_for_less_than_six.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_less_than_six.d -c ./source/push_swap/solve_for_less_than_six.c -o $(DEFAULT_DIR)/objects/solve_for_less_than_six.o
+
+$(DEFAULT_DIR)/objects/solve_for_more_than_five.o: ./source/push_swap/solve_for_more_than_five.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_more_than_five.d -c ./source/push_swap/solve_for_more_than_five.c -o $(DEFAULT_DIR)/objects/solve_for_more_than_five.o
+
+$(DEFAULT_DIR)/objects/validate_arguments.o: ./source/push_swap/validate_arguments.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/validate_arguments.d -c ./source/push_swap/validate_arguments.c -o $(DEFAULT_DIR)/objects/validate_arguments.o
+
+$(DEFAULT_DIR)/objects/put_smallest_on_top.o: ./source/small_sort/put_smallest_on_top.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/put_smallest_on_top.d -c ./source/small_sort/put_smallest_on_top.c -o $(DEFAULT_DIR)/objects/put_smallest_on_top.o
+
+$(DEFAULT_DIR)/objects/solve_for_five.o: ./source/small_sort/solve_for_five.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_five.d -c ./source/small_sort/solve_for_five.c -o $(DEFAULT_DIR)/objects/solve_for_five.o
+
+$(DEFAULT_DIR)/objects/solve_for_four.o: ./source/small_sort/solve_for_four.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_four.d -c ./source/small_sort/solve_for_four.c -o $(DEFAULT_DIR)/objects/solve_for_four.o
+
+$(DEFAULT_DIR)/objects/solve_for_three.o: ./source/small_sort/solve_for_three.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_three.d -c ./source/small_sort/solve_for_three.c -o $(DEFAULT_DIR)/objects/solve_for_three.o
+
+$(DEFAULT_DIR)/objects/solve_for_two.o: ./source/small_sort/solve_for_two.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/solve_for_two.d -c ./source/small_sort/solve_for_two.c -o $(DEFAULT_DIR)/objects/solve_for_two.o
+
+$(DEFAULT_DIR)/objects/main.o: ./source/push_swap/push_swap.c
+	@$(CC) $(CFLAGS) $(CPATHS) -Dpush_swap=main -c ./source/push_swap/push_swap.c -o $(DEFAULT_DIR)/objects/main.o
 
 
 $(TESTS_DIR)/objects/allocate.o: ./tests/functions/allocate.c

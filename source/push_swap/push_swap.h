@@ -6,13 +6,14 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 21:21:17 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/04 16:27:18 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:17:32 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include "small_sort.h"
 #include "radix.h"
 
 void	check_if_it_is_already_sorted(void);

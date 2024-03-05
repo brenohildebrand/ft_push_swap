@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:39:33 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/04 18:02:48 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:46:13 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	pa(void)
 	
 	alpha = any_as_instance(retrieve("alpha"));
 	beta = any_as_instance(retrieve("beta"));
-	push(beta, pop(alpha));
+	push(alpha, pop(beta));
 	display("pa\n");
 }
