@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_arguments.c                               :+:      :+:    :+:   */
+/*   invalid_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 21:22:08 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/03 21:09:11 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/03/01 11:11:17 by bhildebr          #+#    #+#             */
+/*   Updated: 2024/03/05 14:29:43 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,22 @@ void	t4(void);
 
 t_i32	main(void)
 {
-	assert(forkrun(t1) == 0);
+	assert(forkrun(t1) == 1);
 	assert(forkrun(t2) == 1);
-	assert(forkrun(t3) == 0);
+	assert(forkrun(t3) == 1);
 	assert(forkrun(t4) == 1);
+	assert(run(1, "./push_swap 1", push_swap));
 	return (0);
 }
 
 void	t1(void)
 {
 	t_i32	argc;
-	t_i8	*argv[4];
+	t_i8	*argv[2];
 
-	argc = 4;
+	argc = 2;
 	argv[0] = "./push_swap";
-	argv[1] = "1";
-	argv[2] = "2";
-	argv[3] = "3";
+	argv[1] = "ko";
 	validate_arguments(argc, argv);
 }
 
