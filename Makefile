@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/05 13:47:01 by                   #+#    #+#              #
-#    Updated: 2024/03/05 13:47:01 by                  ###   ########.fr        #
+#    Created: 2024/03/06 12:15:10 by                   #+#    #+#              #
+#    Updated: 2024/03/06 12:15:10 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,8 @@ CPATHS = 	-include framework.h \
 	-iquote /home/bhildebr/github/ft_push_swap/source/small_sort
 
 SOURCES = \
+	./source/big_sort/radix/normalize.c \
+	./source/big_sort/radix/put_in_boxes.c \
 	./source/big_sort/radix/radix.c \
 	./source/operations/pa.c \
 	./source/operations/pb.c \
@@ -89,12 +91,15 @@ SOURCES = \
 	./source/small_sort/solve_for_two.c
 
 HEADERS = \
+	big_sort.h \
 	radix.h \
 	operations.h \
 	push_swap.h \
 	small_sort.h
 
 OBJECTS = \
+	normalize.o \
+	put_in_boxes.o \
 	radix.o \
 	pa.o \
 	pb.o \
@@ -122,6 +127,8 @@ OBJECTS = \
 	main.o
 
 DEPENDENCIES = \
+	normalize.d \
+	put_in_boxes.d \
 	radix.d \
 	pa.d \
 	pb.d \
@@ -148,22 +155,25 @@ DEPENDENCIES = \
 	solve_for_two.d
 
 TESTS = \
-	build/tests/bin/create_and_share_stacks \
-	build/tests/bin/fill_alpha_with_arguments \
-	build/tests/bin/push_swap \
-	build/tests/bin/validate_arguments
+	build/tests/bin/already_sorted_input \
+	build/tests/bin/five_hundred \
+	build/tests/bin/five_or_less \
+	build/tests/bin/invalid_input \
+	build/tests/bin/one_hundred
 
 TESTS_OBJECTS = \
-	build/tests/objects/create_and_share_stacks.o \
-	build/tests/objects/fill_alpha_with_arguments.o \
-	build/tests/objects/push_swap.o \
-	build/tests/objects/validate_arguments.o
+	build/tests/objects/already_sorted_input.o \
+	build/tests/objects/five_hundred.o \
+	build/tests/objects/five_or_less.o \
+	build/tests/objects/invalid_input.o \
+	build/tests/objects/one_hundred.o
 
 TESTS_DEPENDENCIES = \
-	build/tests/dependencies/create_and_share_stacks.d \
-	build/tests/dependencies/fill_alpha_with_arguments.d \
-	build/tests/dependencies/push_swap.d \
-	build/tests/dependencies/validate_arguments.d
+	build/tests/dependencies/already_sorted_input.d \
+	build/tests/dependencies/five_hundred.d \
+	build/tests/dependencies/five_or_less.d \
+	build/tests/dependencies/invalid_input.d \
+	build/tests/dependencies/one_hundred.d
 
 DEBUG_DIR = ./build/debug
 DEFAULT_DIR = ./build/default
@@ -321,6 +331,9 @@ $(DEBUG_DIR)/objects/reverse_rotate.o: ./source/functions/reverse_rotate.c
 
 $(DEBUG_DIR)/objects/rotate.o: ./source/functions/rotate.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/rotate.d -c ./source/functions/rotate.c -o $(DEBUG_DIR)/objects/rotate.o
+
+$(DEBUG_DIR)/objects/set.o: ./source/functions/set.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/set.d -c ./source/functions/set.c -o $(DEBUG_DIR)/objects/set.o
 
 $(DEBUG_DIR)/objects/share.o: ./source/functions/share.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEBUG_DIR)/objects/share.o
@@ -514,6 +527,9 @@ $(DEBUG_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 $(DEBUG_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEBUG_DIR)/objects/list_swap.o
 
+$(DEBUG_DIR)/objects/list_to_any.o: ./source/types/list/list_to_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_to_any.d -c ./source/types/list/list_to_any.c -o $(DEBUG_DIR)/objects/list_to_any.o
+
 $(DEBUG_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_unshift.d -c ./source/types/list/list_unshift.c -o $(DEBUG_DIR)/objects/list_unshift.o
 
@@ -588,6 +604,12 @@ $(DEBUG_DIR)/objects/u8.o: ./source/types/u8/u8.c
 
 $(DEBUG_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEBUG_DIR)/objects/u8_to_any.o
+
+$(DEBUG_DIR)/objects/normalize.o: ./source/big_sort/radix/normalize.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/normalize.d -c ./source/big_sort/radix/normalize.c -o $(DEBUG_DIR)/objects/normalize.o
+
+$(DEBUG_DIR)/objects/put_in_boxes.o: ./source/big_sort/radix/put_in_boxes.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/put_in_boxes.d -c ./source/big_sort/radix/put_in_boxes.c -o $(DEBUG_DIR)/objects/put_in_boxes.o
 
 $(DEBUG_DIR)/objects/radix.o: ./source/big_sort/radix/radix.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/radix.d -c ./source/big_sort/radix/radix.c -o $(DEBUG_DIR)/objects/radix.o
@@ -766,6 +788,9 @@ $(DEFAULT_DIR)/objects/reverse_rotate.o: ./source/functions/reverse_rotate.c
 
 $(DEFAULT_DIR)/objects/rotate.o: ./source/functions/rotate.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/rotate.d -c ./source/functions/rotate.c -o $(DEFAULT_DIR)/objects/rotate.o
+
+$(DEFAULT_DIR)/objects/set.o: ./source/functions/set.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/set.d -c ./source/functions/set.c -o $(DEFAULT_DIR)/objects/set.o
 
 $(DEFAULT_DIR)/objects/share.o: ./source/functions/share.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/share.d -c ./source/functions/share.c -o $(DEFAULT_DIR)/objects/share.o
@@ -959,6 +984,9 @@ $(DEFAULT_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 $(DEFAULT_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEFAULT_DIR)/objects/list_swap.o
 
+$(DEFAULT_DIR)/objects/list_to_any.o: ./source/types/list/list_to_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_to_any.d -c ./source/types/list/list_to_any.c -o $(DEFAULT_DIR)/objects/list_to_any.o
+
 $(DEFAULT_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_unshift.d -c ./source/types/list/list_unshift.c -o $(DEFAULT_DIR)/objects/list_unshift.o
 
@@ -1033,6 +1061,12 @@ $(DEFAULT_DIR)/objects/u8.o: ./source/types/u8/u8.c
 
 $(DEFAULT_DIR)/objects/u8_to_any.o: ./source/types/u8/u8_to_any.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/u8_to_any.d -c ./source/types/u8/u8_to_any.c -o $(DEFAULT_DIR)/objects/u8_to_any.o
+
+$(DEFAULT_DIR)/objects/normalize.o: ./source/big_sort/radix/normalize.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/normalize.d -c ./source/big_sort/radix/normalize.c -o $(DEFAULT_DIR)/objects/normalize.o
+
+$(DEFAULT_DIR)/objects/put_in_boxes.o: ./source/big_sort/radix/put_in_boxes.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/put_in_boxes.d -c ./source/big_sort/radix/put_in_boxes.c -o $(DEFAULT_DIR)/objects/put_in_boxes.o
 
 $(DEFAULT_DIR)/objects/radix.o: ./source/big_sort/radix/radix.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/radix.d -c ./source/big_sort/radix/radix.c -o $(DEFAULT_DIR)/objects/radix.o
@@ -1158,20 +1192,24 @@ $(TESTS_DIR)/objects/map_destroy.o: ./tests/types/map/map_destroy.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_destroy.d -c ./tests/types/map/map_destroy.c -o $(TESTS_DIR)/objects/map_destroy.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_destroy.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_destroy
 
-$(TESTS_DIR)/objects/create_and_share_stacks.o: ./tests/create_and_share_stacks.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/create_and_share_stacks.d -c ./tests/create_and_share_stacks.c -o $(TESTS_DIR)/objects/create_and_share_stacks.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/create_and_share_stacks.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/create_and_share_stacks
+$(TESTS_DIR)/objects/already_sorted_input.o: ./tests/already_sorted_input.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/already_sorted_input.d -c ./tests/already_sorted_input.c -o $(TESTS_DIR)/objects/already_sorted_input.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/already_sorted_input.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/already_sorted_input
 
-$(TESTS_DIR)/objects/fill_alpha_with_arguments.o: ./tests/fill_alpha_with_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/fill_alpha_with_arguments.d -c ./tests/fill_alpha_with_arguments.c -o $(TESTS_DIR)/objects/fill_alpha_with_arguments.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/fill_alpha_with_arguments.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/fill_alpha_with_arguments
+$(TESTS_DIR)/objects/five_hundred.o: ./tests/five_hundred.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/five_hundred.d -c ./tests/five_hundred.c -o $(TESTS_DIR)/objects/five_hundred.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/five_hundred.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/five_hundred
 
-$(TESTS_DIR)/objects/push_swap.o: ./tests/push_swap.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/push_swap.d -c ./tests/push_swap.c -o $(TESTS_DIR)/objects/push_swap.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/push_swap.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/push_swap
+$(TESTS_DIR)/objects/five_or_less.o: ./tests/five_or_less.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/five_or_less.d -c ./tests/five_or_less.c -o $(TESTS_DIR)/objects/five_or_less.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/five_or_less.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/five_or_less
 
-$(TESTS_DIR)/objects/validate_arguments.o: ./tests/validate_arguments.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/validate_arguments.d -c ./tests/validate_arguments.c -o $(TESTS_DIR)/objects/validate_arguments.o
-	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/validate_arguments.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/validate_arguments
+$(TESTS_DIR)/objects/invalid_input.o: ./tests/invalid_input.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/invalid_input.d -c ./tests/invalid_input.c -o $(TESTS_DIR)/objects/invalid_input.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/invalid_input.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/invalid_input
+
+$(TESTS_DIR)/objects/one_hundred.o: ./tests/one_hundred.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/one_hundred.d -c ./tests/one_hundred.c -o $(TESTS_DIR)/objects/one_hundred.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/one_hundred.o $(filter-out $(DEFAULT_DIR)/objects/main.o, $(DEFAULT_OBJECTS)) $(DEFAULT_LIBFRAMEWORK) -o $(TESTS_DIR)/bin/one_hundred
 
 

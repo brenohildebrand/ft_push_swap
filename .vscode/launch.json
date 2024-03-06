@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
 		{
-			"name": "create_and_share_stacks",
+			"name": "already_sorted_input",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/tests/bin/create_and_share_stacks",
+			"program": "${workspaceFolder}/build/tests/bin/already_sorted_input",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
@@ -22,10 +22,10 @@
             "preLaunchTask": "build"
 		},
 		{
-			"name": "fill_alpha_with_arguments",
+			"name": "five_hundred",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/tests/bin/fill_alpha_with_arguments",
+			"program": "${workspaceFolder}/build/tests/bin/five_hundred",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
@@ -42,10 +42,10 @@
             "preLaunchTask": "build"
 		},
 		{
-			"name": "push_swap",
+			"name": "five_or_less",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/tests/bin/push_swap",
+			"program": "${workspaceFolder}/build/tests/bin/five_or_less",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
@@ -62,10 +62,30 @@
             "preLaunchTask": "build"
 		},
 		{
-			"name": "validate_arguments",
+			"name": "invalid_input",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/build/tests/bin/validate_arguments",
+			"program": "${workspaceFolder}/build/tests/bin/invalid_input",
+			"args": [],
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build"
+		},
+		{
+			"name": "one_hundred",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/build/tests/bin/one_hundred",
 			"args": [],
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}",
