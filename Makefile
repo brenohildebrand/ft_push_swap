@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/06 12:15:10 by                   #+#    #+#              #
-#    Updated: 2024/03/06 12:15:10 by                  ###   ########.fr        #
+#    Created: 2024/03/06 21:38:53 by                   #+#    #+#              #
+#    Updated: 2024/03/06 21:38:53 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -278,11 +278,11 @@ $(DEBUG_DIR)/objects/filter.o: ./source/functions/filter.c
 $(DEBUG_DIR)/objects/find.o: ./source/functions/find.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/find.d -c ./source/functions/find.c -o $(DEBUG_DIR)/objects/find.o
 
-$(DEBUG_DIR)/objects/foreach.o: ./source/functions/foreach.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/foreach.d -c ./source/functions/foreach.c -o $(DEBUG_DIR)/objects/foreach.o
-
 $(DEBUG_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEBUG_DIR)/objects/forkrun.o
+
+$(DEBUG_DIR)/objects/for_each.o: ./source/functions/for_each.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/for_each.d -c ./source/functions/for_each.c -o $(DEBUG_DIR)/objects/for_each.o
 
 $(DEBUG_DIR)/objects/get.o: ./source/functions/get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/get.d -c ./source/functions/get.c -o $(DEBUG_DIR)/objects/get.o
@@ -340,6 +340,9 @@ $(DEBUG_DIR)/objects/share.o: ./source/functions/share.c
 
 $(DEBUG_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEBUG_DIR)/objects/slice.o
+
+$(DEBUG_DIR)/objects/sort.o: ./source/functions/sort.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/sort.d -c ./source/functions/sort.c -o $(DEBUG_DIR)/objects/sort.o
 
 $(DEBUG_DIR)/objects/swap.o: ./source/functions/swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/swap.d -c ./source/functions/swap.c -o $(DEBUG_DIR)/objects/swap.o
@@ -494,6 +497,9 @@ $(DEBUG_DIR)/objects/list_destroy.o: ./source/types/list/list_destroy.c
 $(DEBUG_DIR)/objects/list_expand.o: ./source/types/list/list_expand.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_expand.d -c ./source/types/list/list_expand.c -o $(DEBUG_DIR)/objects/list_expand.o
 
+$(DEBUG_DIR)/objects/list_for_each.o: ./source/types/list/list_for_each.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_for_each.d -c ./source/types/list/list_for_each.c -o $(DEBUG_DIR)/objects/list_for_each.o
+
 $(DEBUG_DIR)/objects/list_get.o: ./source/types/list/list_get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_get.d -c ./source/types/list/list_get.c -o $(DEBUG_DIR)/objects/list_get.o
 
@@ -524,6 +530,9 @@ $(DEBUG_DIR)/objects/list_set.o: ./source/types/list/list_set.c
 $(DEBUG_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_shift.d -c ./source/types/list/list_shift.c -o $(DEBUG_DIR)/objects/list_shift.o
 
+$(DEBUG_DIR)/objects/list_sort.o: ./source/types/list/list_sort.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_sort.d -c ./source/types/list/list_sort.c -o $(DEBUG_DIR)/objects/list_sort.o
+
 $(DEBUG_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEBUG_DIR)/objects/list_swap.o
 
@@ -535,6 +544,9 @@ $(DEBUG_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 
 $(DEBUG_DIR)/objects/map.o: ./source/types/map/map.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/map.d -c ./source/types/map/map.c -o $(DEBUG_DIR)/objects/map.o
+
+$(DEBUG_DIR)/objects/map_as_any.o: ./source/types/map/map_as_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/map_as_any.d -c ./source/types/map/map_as_any.c -o $(DEBUG_DIR)/objects/map_as_any.o
 
 $(DEBUG_DIR)/objects/map_copy.o: ./source/types/map/map_copy.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/map_copy.d -c ./source/types/map/map_copy.c -o $(DEBUG_DIR)/objects/map_copy.o
@@ -556,6 +568,9 @@ $(DEBUG_DIR)/objects/map_hash.o: ./source/types/map/map_hash.c
 
 $(DEBUG_DIR)/objects/map_set.o: ./source/types/map/map_set.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/map_set.d -c ./source/types/map/map_set.c -o $(DEBUG_DIR)/objects/map_set.o
+
+$(DEBUG_DIR)/objects/map_to_any.o: ./source/types/map/map_to_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/map_to_any.d -c ./source/types/map/map_to_any.c -o $(DEBUG_DIR)/objects/map_to_any.o
 
 $(DEBUG_DIR)/objects/memtree_create.o: ./source/types/memtree/memtree_create.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/memtree_create.d -c ./source/types/memtree/memtree_create.c -o $(DEBUG_DIR)/objects/memtree_create.o
@@ -735,11 +750,11 @@ $(DEFAULT_DIR)/objects/filter.o: ./source/functions/filter.c
 $(DEFAULT_DIR)/objects/find.o: ./source/functions/find.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/find.d -c ./source/functions/find.c -o $(DEFAULT_DIR)/objects/find.o
 
-$(DEFAULT_DIR)/objects/foreach.o: ./source/functions/foreach.c
-	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/foreach.d -c ./source/functions/foreach.c -o $(DEFAULT_DIR)/objects/foreach.o
-
 $(DEFAULT_DIR)/objects/forkrun.o: ./source/functions/forkrun.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/forkrun.d -c ./source/functions/forkrun.c -o $(DEFAULT_DIR)/objects/forkrun.o
+
+$(DEFAULT_DIR)/objects/for_each.o: ./source/functions/for_each.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/for_each.d -c ./source/functions/for_each.c -o $(DEFAULT_DIR)/objects/for_each.o
 
 $(DEFAULT_DIR)/objects/get.o: ./source/functions/get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/get.d -c ./source/functions/get.c -o $(DEFAULT_DIR)/objects/get.o
@@ -797,6 +812,9 @@ $(DEFAULT_DIR)/objects/share.o: ./source/functions/share.c
 
 $(DEFAULT_DIR)/objects/slice.o: ./source/functions/slice.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/slice.d -c ./source/functions/slice.c -o $(DEFAULT_DIR)/objects/slice.o
+
+$(DEFAULT_DIR)/objects/sort.o: ./source/functions/sort.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/sort.d -c ./source/functions/sort.c -o $(DEFAULT_DIR)/objects/sort.o
 
 $(DEFAULT_DIR)/objects/swap.o: ./source/functions/swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/swap.d -c ./source/functions/swap.c -o $(DEFAULT_DIR)/objects/swap.o
@@ -951,6 +969,9 @@ $(DEFAULT_DIR)/objects/list_destroy.o: ./source/types/list/list_destroy.c
 $(DEFAULT_DIR)/objects/list_expand.o: ./source/types/list/list_expand.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_expand.d -c ./source/types/list/list_expand.c -o $(DEFAULT_DIR)/objects/list_expand.o
 
+$(DEFAULT_DIR)/objects/list_for_each.o: ./source/types/list/list_for_each.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_for_each.d -c ./source/types/list/list_for_each.c -o $(DEFAULT_DIR)/objects/list_for_each.o
+
 $(DEFAULT_DIR)/objects/list_get.o: ./source/types/list/list_get.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_get.d -c ./source/types/list/list_get.c -o $(DEFAULT_DIR)/objects/list_get.o
 
@@ -981,6 +1002,9 @@ $(DEFAULT_DIR)/objects/list_set.o: ./source/types/list/list_set.c
 $(DEFAULT_DIR)/objects/list_shift.o: ./source/types/list/list_shift.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_shift.d -c ./source/types/list/list_shift.c -o $(DEFAULT_DIR)/objects/list_shift.o
 
+$(DEFAULT_DIR)/objects/list_sort.o: ./source/types/list/list_sort.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_sort.d -c ./source/types/list/list_sort.c -o $(DEFAULT_DIR)/objects/list_sort.o
+
 $(DEFAULT_DIR)/objects/list_swap.o: ./source/types/list/list_swap.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_swap.d -c ./source/types/list/list_swap.c -o $(DEFAULT_DIR)/objects/list_swap.o
 
@@ -992,6 +1016,9 @@ $(DEFAULT_DIR)/objects/list_unshift.o: ./source/types/list/list_unshift.c
 
 $(DEFAULT_DIR)/objects/map.o: ./source/types/map/map.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/map.d -c ./source/types/map/map.c -o $(DEFAULT_DIR)/objects/map.o
+
+$(DEFAULT_DIR)/objects/map_as_any.o: ./source/types/map/map_as_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/map_as_any.d -c ./source/types/map/map_as_any.c -o $(DEFAULT_DIR)/objects/map_as_any.o
 
 $(DEFAULT_DIR)/objects/map_copy.o: ./source/types/map/map_copy.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/map_copy.d -c ./source/types/map/map_copy.c -o $(DEFAULT_DIR)/objects/map_copy.o
@@ -1013,6 +1040,9 @@ $(DEFAULT_DIR)/objects/map_hash.o: ./source/types/map/map_hash.c
 
 $(DEFAULT_DIR)/objects/map_set.o: ./source/types/map/map_set.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/map_set.d -c ./source/types/map/map_set.c -o $(DEFAULT_DIR)/objects/map_set.o
+
+$(DEFAULT_DIR)/objects/map_to_any.o: ./source/types/map/map_to_any.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/map_to_any.d -c ./source/types/map/map_to_any.c -o $(DEFAULT_DIR)/objects/map_to_any.o
 
 $(DEFAULT_DIR)/objects/memtree_create.o: ./source/types/memtree/memtree_create.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/memtree_create.d -c ./source/types/memtree/memtree_create.c -o $(DEFAULT_DIR)/objects/memtree_create.o

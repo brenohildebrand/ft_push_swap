@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:47:25 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/06 12:22:39 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:26:49 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	normalize(void)
 	alpha = any_as_instance(retrieve("alpha"));
 	alpha_copy = copy(alpha);
 	sort(alpha_copy);
-	foreach(alpha_copy, map_number);
+	for_each(alpha_copy, map_number);
 	destroy(alpha_copy);
 }
