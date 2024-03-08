@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/06 21:38:53 by                   #+#    #+#              #
-#    Updated: 2024/03/06 21:38:53 by                  ###   ########.fr        #
+#    Created: 2024/03/08 19:40:36 by                   #+#    #+#              #
+#    Updated: 2024/03/08 19:40:36 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -512,6 +512,9 @@ $(DEBUG_DIR)/objects/list_is_sorted.o: ./source/types/list/list_is_sorted.c
 $(DEBUG_DIR)/objects/list_pop.o: ./source/types/list/list_pop.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_pop.d -c ./source/types/list/list_pop.c -o $(DEBUG_DIR)/objects/list_pop.o
 
+$(DEBUG_DIR)/objects/list_print.o: ./source/types/list/list_print.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_print.d -c ./source/types/list/list_print.c -o $(DEBUG_DIR)/objects/list_print.o
+
 $(DEBUG_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_push.d -c ./source/types/list/list_push.c -o $(DEBUG_DIR)/objects/list_push.o
 
@@ -984,6 +987,9 @@ $(DEFAULT_DIR)/objects/list_is_sorted.o: ./source/types/list/list_is_sorted.c
 $(DEFAULT_DIR)/objects/list_pop.o: ./source/types/list/list_pop.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_pop.d -c ./source/types/list/list_pop.c -o $(DEFAULT_DIR)/objects/list_pop.o
 
+$(DEFAULT_DIR)/objects/list_print.o: ./source/types/list/list_print.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_print.d -c ./source/types/list/list_print.c -o $(DEFAULT_DIR)/objects/list_print.o
+
 $(DEFAULT_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_push.d -c ./source/types/list/list_push.c -o $(DEFAULT_DIR)/objects/list_push.o
 
@@ -1221,6 +1227,14 @@ $(TESTS_DIR)/objects/map_create.o: ./tests/types/map/map_create.c
 $(TESTS_DIR)/objects/map_destroy.o: ./tests/types/map/map_destroy.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_destroy.d -c ./tests/types/map/map_destroy.c -o $(TESTS_DIR)/objects/map_destroy.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_destroy.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_destroy
+
+$(TESTS_DIR)/objects/map_get.o: ./tests/types/map/map_get.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_get.d -c ./tests/types/map/map_get.c -o $(TESTS_DIR)/objects/map_get.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_get.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_get
+
+$(TESTS_DIR)/objects/map_set.o: ./tests/types/map/map_set.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_set.d -c ./tests/types/map/map_set.c -o $(TESTS_DIR)/objects/map_set.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/map_set.o $(DEFAULT) -o $(TESTS_DIR)/bin/map_set
 
 $(TESTS_DIR)/objects/already_sorted_input.o: ./tests/already_sorted_input.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/already_sorted_input.d -c ./tests/already_sorted_input.c -o $(TESTS_DIR)/objects/already_sorted_input.o

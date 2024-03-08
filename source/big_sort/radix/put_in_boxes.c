@@ -6,7 +6,7 @@
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:47:41 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/06 16:30:08 by bhildebr         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:07:01 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ static void	distribute_in_boxes(void)
 	t_i32	index;
 	t_any	current;
 	t_i32	bit;
+	t_i32	proxy;
 	
 	indexes = any_as_instance(retrieve("indexes"));
 	index = any_as_i32(retrieve("index"));
 	alpha = any_as_instance(retrieve("alpha"));
 	current = get(alpha, i32_to_any(get_length(alpha) - 1));
-	bit = (any_as_i32(get(indexes, current)) & (1 << index)) != 0;
+	proxy = any_as_i32(get(indexes, i32_to_any(any_as_i32(current))));
+	bit = (proxy & (1 << index)) != 0;
 	if (bit == 0)
 	{
 		pb();
