@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By:  <@student.42.fr>                          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/08 19:40:36 by                   #+#    #+#              #
-#    Updated: 2024/03/08 19:40:36 by                  ###   ########.fr        #
+#    Created: 2024/03/10 15:21:58 by                   #+#    #+#              #
+#    Updated: 2024/03/10 15:21:58 by                  ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -518,6 +518,9 @@ $(DEBUG_DIR)/objects/list_print.o: ./source/types/list/list_print.c
 $(DEBUG_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_push.d -c ./source/types/list/list_push.c -o $(DEBUG_DIR)/objects/list_push.o
 
+$(DEBUG_DIR)/objects/list_reduce.o: ./source/types/list/list_reduce.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_reduce.d -c ./source/types/list/list_reduce.c -o $(DEBUG_DIR)/objects/list_reduce.o
+
 $(DEBUG_DIR)/objects/list_reverse.o: ./source/types/list/list_reverse.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEBUG_DIR)/dependencies/list_reverse.d -c ./source/types/list/list_reverse.c -o $(DEBUG_DIR)/objects/list_reverse.o
 
@@ -993,6 +996,9 @@ $(DEFAULT_DIR)/objects/list_print.o: ./source/types/list/list_print.c
 $(DEFAULT_DIR)/objects/list_push.o: ./source/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_push.d -c ./source/types/list/list_push.c -o $(DEFAULT_DIR)/objects/list_push.o
 
+$(DEFAULT_DIR)/objects/list_reduce.o: ./source/types/list/list_reduce.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_reduce.d -c ./source/types/list/list_reduce.c -o $(DEFAULT_DIR)/objects/list_reduce.o
+
 $(DEFAULT_DIR)/objects/list_reverse.o: ./source/types/list/list_reverse.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(DEFAULT_DIR)/dependencies/list_reverse.d -c ./source/types/list/list_reverse.c -o $(DEFAULT_DIR)/objects/list_reverse.o
 
@@ -1219,6 +1225,10 @@ $(TESTS_DIR)/objects/list_is_sorted.o: ./tests/types/list/list_is_sorted.c
 $(TESTS_DIR)/objects/list_push.o: ./tests/types/list/list_push.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_push.d -c ./tests/types/list/list_push.c -o $(TESTS_DIR)/objects/list_push.o
 	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_push.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_push
+
+$(TESTS_DIR)/objects/list_reduce.o: ./tests/types/list/list_reduce.c
+	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/list_reduce.d -c ./tests/types/list/list_reduce.c -o $(TESTS_DIR)/objects/list_reduce.o
+	@$(CC) $(CFLAGS) $(CPATHS) $(TESTS_DIR)/objects/list_reduce.o $(DEFAULT) -o $(TESTS_DIR)/bin/list_reduce
 
 $(TESTS_DIR)/objects/map_create.o: ./tests/types/map/map_create.c
 	@$(CC) $(CFLAGS) $(CPATHS) -MMD -MF $(TESTS_DIR)/dependencies/map_create.d -c ./tests/types/map/map_create.c -o $(TESTS_DIR)/objects/map_create.o
