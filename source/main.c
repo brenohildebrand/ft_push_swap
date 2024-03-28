@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhildebr <bhildebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 16:38:44 by bhildebr          #+#    #+#             */
-/*   Updated: 2024/03/04 18:04:12 by bhildebr         ###   ########.fr       */
+/*   Created: 2024/03/27 20:57:36 by trillian          #+#    #+#             */
+/*   Updated: 2024/03/28 15:51:56 by bhildebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	sa(void)
+/**
+ * Let the first stack be alpha and the second be beta.
+ */
+
+#include "types.h"
+#include "push_swap.h"
+
+t_i32	main(t_i32 argc, t_i8 *argv[])
 {
-	t_list	alpha;
-	
-	alpha = any_as_instance(retrieve("alpha"));
-	swap(alpha);
-	display("sa\n");
+	validate_arguments(argc, argv);
+	return (0);
 }

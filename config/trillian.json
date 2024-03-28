@@ -1,0 +1,9 @@
+{
+    "name": "ft_push_swap",
+    "type": "project",
+    "dependencies": [
+        "types",
+        "utils"
+    ],
+    "editor": "vscode"
+}
